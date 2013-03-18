@@ -1,0 +1,358 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Workflow creation API &mdash; soma-workflow developement version documentation</title>
+    
+    <link rel="stylesheet" href="static/default.css" type="text/css" />
+    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '2.5.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="static/jquery.js"></script>
+    <script type="text/javascript" src="static/underscore.js"></script>
+    <script type="text/javascript" src="static/doctools.js"></script>
+    <link rel="shortcut icon" href="static/icon_small.png"/>
+    <link rel="top" title="soma-workflow developement version documentation" href="index.html" />
+    <link rel="next" title="Python API" href="client_API.html" />
+    <link rel="prev" title="Status list" href="status_list.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="client_API.html" title="Python API"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="status_list.html" title="Status list"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">soma-workflow developement version documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="workflow-creation-api">
+<span id="id1"></span><h1>Workflow creation API<a class="headerlink" href="#workflow-creation-api" title="Permalink to this headline">¶</a></h1>
+<p>The workflows are created using the soma.workflow.client API. This page presents
+the documentation of the Workflow, Job, FileTransfer and SharedResourcePath
+classes.</p>
+<div class="admonition-see-also admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="examples.html#examples"><em>Examples</em></a> for a quick start.</p>
+</div>
+<div class="section" id="workflow">
+<h2>Workflow<a class="headerlink" href="#workflow" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="client.Workflow">
+<em class="property">class </em><tt class="descclassname">client.</tt><tt class="descname">Workflow</tt><big>(</big><em>object</em><big>)</big><a class="headerlink" href="#client.Workflow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Workflow representation.</p>
+<p><strong>name</strong>: <em>string</em></p>
+<dl class="docutils">
+<dt><strong>jobs</strong>: <em>sequence of Job</em></dt>
+<dd>Workflow jobs.</dd>
+<dt><strong>dependencies</strong>: <em>sequence of tuple (Job, Job)</em></dt>
+<dd>Dependencies between the jobs of the workflow.
+If a job_a needs to be executed before a job_b can run: the tuple
+(job_a, job_b) must be added to the workflow dependencies. job_a and job_b
+must belong to workflow.jobs.</dd>
+<dt><strong>root_group</strong>: <em>sequence of Job and/or Group</em></dt>
+<dd>Recursive description of the workflow hierarchical structure. For displaying
+purpose only.</dd>
+</dl>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>root_group is only used to display nicely the workflow in the GUI. It
+does not have any impact on the workflow execution.</p>
+<p class="last">If root_group is not set, all the jobs of the workflow will be
+displayed at the root level in the GUI tree view.</p>
+</div>
+<dl class="docutils">
+<dt><strong>user_storage</strong>: <em>picklable object</em></dt>
+<dd>For the user needs, any small and picklable object can be stored here.</dd>
+<dt><strong>name</strong>: <em>string</em></dt>
+<dd>Name of the workflow which will be displayed in the GUI.
+Default: workflow_id once submitted</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="group">
+<h2>Group<a class="headerlink" href="#group" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="client.Group">
+<em class="property">class </em><tt class="descclassname">client.</tt><tt class="descname">Group</tt><big>(</big><em>object</em><big>)</big><a class="headerlink" href="#client.Group" title="Permalink to this definition">¶</a></dt>
+<dd><p>Hierarchical structure of a workflow.</p>
+<dl class="docutils">
+<dt><strong>elements</strong>: <em>sequence of Job and/or Group</em></dt>
+<dd>The elements (Job or Group) belonging to the group.</dd>
+<dt><strong>name</strong>: <em>string</em></dt>
+<dd>Name of the Group which will be displayed in the GUI.</dd>
+<dt><strong>user_storage</strong>: <em>picklable object</em></dt>
+<dd>For the user needs, any small and picklable object can be stored here.</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="job">
+<h2>Job<a class="headerlink" href="#job" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="client.Job">
+<em class="property">class </em><tt class="descclassname">client.</tt><tt class="descname">Job</tt><big>(</big><em>object</em><big>)</big><a class="headerlink" href="#client.Job" title="Permalink to this definition">¶</a></dt>
+<dd><p>Job representation.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The command is the only argument required to create a Job.
+It is also useful to fill the job name for the workflow display in the GUI.</p>
+</div>
+<p><strong>command</strong>: <em>sequence of string or/and FileTransfer or/and SharedResourcePath or/and tuple (FileTransfer, relative_path) or/and sequence of FileTransfer or/and sequence of SharedResourcePath or/and sequence of tuple (FileTransfer, relative_path)</em></p>
+<blockquote>
+<div><p>The command to execute. It can not be empty. In case of a shared file system
+the command is a sequence of string.</p>
+<p>In the other cases, the FileTransfer and SharedResourcePath objects will be
+replaced by the appropriate path before the job execution.</p>
+<p>The tuples (FileTransfer, relative_path) can be used to refer to a file in a
+transfered directory.</p>
+<p>The sequences of FileTransfer, SharedResourcePath or tuple (FileTransfer,
+relative_path) will be replaced by the string &#8220;[&#8216;path1&#8217;, &#8216;path2&#8217;, &#8216;path3&#8217;]&#8221;
+before the job execution. The FileTransfer, SharedResourcePath or tuple
+(FileTransfer, relative_path) are replaced by the appropriate path inside
+the sequence.</p>
+</div></blockquote>
+<dl class="docutils">
+<dt><strong>name</strong>: <em>string</em></dt>
+<dd>Name of the Job which will be displayed in the GUI</dd>
+<dt><strong>referenced_input_files</strong>: <em>sequence of FileTransfer</em></dt>
+<dd>List of the FileTransfer which are input of the Job. In other words,
+FileTransfer which are requiered by the Job to run. It includes the
+stdin if you use one.</dd>
+<dt><strong>referenced_output_files</strong>: <em>sequence of FileTransfer</em></dt>
+<dd>List of the FileTransfer which are output of the Job. In other words, the
+FileTransfer which will be created or modified by the Job.</dd>
+<dt><strong>stdin</strong>: <em>string or FileTransfer or SharedRessourcePath</em></dt>
+<dd>Path to the file which will be read as input stream by the Job.</dd>
+<dt><strong>join_stderrout</strong>: <em>boolean</em></dt>
+<dd>Specifies whether the error stream should be mixed with the output stream.</dd>
+<dt><strong>stdout_file</strong>: <em>string or FileTransfer or SharedRessourcePath</em></dt>
+<dd>Path of the file where the standard output stream of the job will be
+redirected.</dd>
+<dt><strong>stderr_file</strong>: <em>string or FileTransfer or SharedRessourcePath</em></dt>
+<dd>Path of the file where the standard error stream of the job will be
+redirected.</dd>
+</dl>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Set stdout_file and stderr_file only if you need to redirect the standard
+output to a specific file. Indeed, even if they are not set the standard
+outputs will always be available through the WorklfowController API.</p>
+</div>
+<dl class="docutils">
+<dt><strong>working_directory</strong>: <em>string or FileTransfer or SharedRessourcePath</em></dt>
+<dd>Path of the directory where the job will be executed. The working directory
+is useful if your Job uses relative file path for example.</dd>
+<dt><strong>priority</strong>: <em>int</em></dt>
+<dd>Job priority: 0 = low priority. If several Jobs are ready to run at the 
+same time the jobs with higher priority will be submitted first.</dd>
+<dt><strong>native_specification</strong>: <em>string</em></dt>
+<dd><p class="first">Some specific option/function of the computing resource you want to use 
+might not be available among the list of Soma-workflow Job attributes.
+Use the native specification attribute to use these specific functionalities. 
+If a native_specification is defined here, the configured native 
+specification will be ignored (documentation configuration item: NATIVE_SPECIFICATION).</p>
+<dl class="last docutils">
+<dt><em>Example:</em> Specification of a job walltime and more:</dt>
+<dd><ul class="first last simple">
+<li>using a PBS cluster: native_specification=&#8221;-l walltime=10:00:00,pmem=16gb&#8221;</li>
+<li>using a SGE cluster: native_specification=&#8221;-l h_rt=10:00:00&#8221;</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt><strong>parallel_job_info</strong>: <em>tuple(string, int)</em></dt>
+<dd><p class="first">The parallel job information must be set if the Job is parallel (ie. made to
+run on several CPU).
+The parallel job information is a tuple: (name of the configuration,
+maximum number of CPU used by the Job).
+The configuration name is the type of parallel Job. Example: MPI or OpenMP.</p>
+<div class="last admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The computing resources must be configured explicitly to use this feature.</p>
+</div>
+</dd>
+<dt><strong>user_storage</strong>: <em>picklable object</em></dt>
+<dd>For the user needs, any small and picklable object can be stored here.</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="filetransfer">
+<h2>FileTransfer<a class="headerlink" href="#filetransfer" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="client.FileTransfer">
+<em class="property">class </em><tt class="descclassname">client.</tt><tt class="descname">FileTransfer</tt><big>(</big><em>object</em><big>)</big><a class="headerlink" href="#client.FileTransfer" title="Permalink to this definition">¶</a></dt>
+<dd><p>File/directory transfer representation</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">FileTransfers objects are only required if the user and computing resources
+have a separate file system.</p>
+</div>
+<dl class="docutils">
+<dt><strong>client_path</strong>: <em>string</em></dt>
+<dd>Path of the file or directory on the user&#8217;s file system.</dd>
+<dt><strong>initial_status</strong>: <em>constants.FILES_DO_NOT_EXIST or constants.FILES_ON_CLIENT</em></dt>
+<dd><ul class="first last simple">
+<li>constants.FILES_ON_CLIENT for workflow input files
+The file(s) will need to be transfered on the computing resource side</li>
+<li>constants.FILES_DO_NOT_EXIST for workflow output files
+The file(s) will be created by a job on the computing resource side.</li>
+</ul>
+</dd>
+<dt><strong>client_paths</strong>: <em>sequence of string</em></dt>
+<dd>Sequence of path. Files to transfer if the FileTransfers concerns a file
+series or if the file format involves several associated files or
+directories (see the note below).</dd>
+<dt><strong>name</strong>: <em>string</em></dt>
+<dd>Name of the FileTransfer which will be displayed in the GUI.
+Default: client_path + &#8220;transfer&#8221;</dd>
+</dl>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Use client_paths if the transfer involves several associated files and/or
+directories. Examples:</p>
+<blockquote class="last">
+<div><blockquote>
+<div><ul class="simple">
+<li>file series</li>
+<li>file format associating several file and/or directories
+(ex: a SPM images are stored in 2 associated files: .img and .hdr)
+In this case, set client_path to one the files (ex: .img) and
+client_paths contains all the files (ex: .img and .hdr files)</li>
+</ul>
+</div></blockquote>
+<p>In other cases (1 file or 1 directory) the client_paths must be set to None.</p>
+</div></blockquote>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="sharedresourcepath">
+<span id="shared-resource-path-api"></span><h2>SharedResourcePath<a class="headerlink" href="#sharedresourcepath" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="client.SharedResourcePath">
+<em class="property">class </em><tt class="descclassname">client.</tt><tt class="descname">SharedResourcePath</tt><big>(</big><em>object</em><big>)</big><a class="headerlink" href="#client.SharedResourcePath" title="Permalink to this definition">¶</a></dt>
+<dd><p>Representation of path which is valid on either user&#8217;s or computing resource
+file system.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">SharedResourcePath objects are only required if the user and computing
+resources have a separate file system.</p>
+</div>
+<dl class="docutils">
+<dt><strong>namespace</strong>: <em>string</em></dt>
+<dd>Namespace for the path. That way several applications can use the same
+identifiers without risk.</dd>
+<dt><strong>uuid</strong>: <em>string</em></dt>
+<dd>Identifier of the absolute path.</dd>
+<dt><strong>relative_path</strong>: <em>string</em></dt>
+<dd>Relative path of the file if the absolute path is a directory path.</dd>
+</dl>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The namespace and uuid must exist in the translations files configured on
+the computing resource side.</p>
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="static/logo_white_small.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Workflow creation API</a><ul>
+<li><a class="reference internal" href="#workflow">Workflow</a></li>
+<li><a class="reference internal" href="#group">Group</a></li>
+<li><a class="reference internal" href="#job">Job</a></li>
+<li><a class="reference internal" href="#filetransfer">FileTransfer</a></li>
+<li><a class="reference internal" href="#sharedresourcepath">SharedResourcePath</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="status_list.html"
+                        title="previous chapter">Status list</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="client_API.html"
+                        title="next chapter">Python API</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="sources/workflow_creation.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="client_API.html" title="Python API"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="status_list.html" title="Status list"
+             >previous</a> |</li>
+        <li><a href="index.html">soma-workflow developement version documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011 CEA, Neurospin, France, CATI, France.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
