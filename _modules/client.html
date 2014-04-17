@@ -8,25 +8,25 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>client &mdash; soma-workflow developement version documentation</title>
+    <title>client &mdash; soma-workflow version 2.6 documentation</title>
     
-    <link rel="stylesheet" href="../static/default.css" type="text/css" />
-    <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '2.5.0',
+        VERSION:     '2.6.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
     </script>
-    <script type="text/javascript" src="../static/jquery.js"></script>
-    <script type="text/javascript" src="../static/underscore.js"></script>
-    <script type="text/javascript" src="../static/doctools.js"></script>
-    <link rel="shortcut icon" href="../static/icon_small.png"/>
-    <link rel="top" title="soma-workflow developement version documentation" href="../index.html" />
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/icon_small.png"/>
+    <link rel="top" title="soma-workflow version 2.6 documentation" href="../index.html" />
     <link rel="up" title="Module code" href="index.html" /> 
   </head>
   <body>
@@ -36,7 +36,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li><a href="../index.html">soma-workflow developement version documentation</a> &raquo;</li>
+        <li><a href="../index.html">soma-workflow version 2.6 documentation</a> &raquo;</li>
           <li><a href="index.html" accesskey="U">Module code</a> &raquo;</li> 
       </ul>
     </div>  
@@ -80,11 +80,11 @@
 <span class="c">#import cProfile</span>
 <span class="c">#import traceback</span>
 
-<span class="kn">import</span> <span class="nn">soma.workflow.connection</span> <span class="kn">as</span> <span class="nn">connection</span>
-<span class="kn">from</span> <span class="nn">soma.workflow.transfer</span> <span class="kn">import</span> <span class="n">PortableRemoteTransfer</span><span class="p">,</span> <span class="n">TransferSCP</span><span class="p">,</span> <span class="n">TransferRsync</span><span class="p">,</span> <span class="n">TransferMonitoring</span><span class="p">,</span> <span class="n">TransferLocal</span>
-<span class="kn">import</span> <span class="nn">soma.workflow.constants</span> <span class="kn">as</span> <span class="nn">constants</span>
-<span class="kn">import</span> <span class="nn">soma.workflow.configuration</span> <span class="kn">as</span> <span class="nn">configuration</span>
-<span class="kn">from</span> <span class="nn">soma.workflow.errors</span> <span class="kn">import</span> <span class="n">TransferError</span><span class="p">,</span> <span class="n">SerializationError</span><span class="p">,</span> <span class="n">SomaWorkflowError</span>
+<span class="kn">import</span> <span class="nn">soma_workflow.connection</span> <span class="kn">as</span> <span class="nn">connection</span>
+<span class="kn">from</span> <span class="nn">soma_workflow.transfer</span> <span class="kn">import</span> <span class="n">PortableRemoteTransfer</span><span class="p">,</span> <span class="n">TransferSCP</span><span class="p">,</span> <span class="n">TransferRsync</span><span class="p">,</span> <span class="n">TransferMonitoring</span><span class="p">,</span> <span class="n">TransferLocal</span>
+<span class="kn">import</span> <span class="nn">soma_workflow.constants</span> <span class="kn">as</span> <span class="nn">constants</span>
+<span class="kn">import</span> <span class="nn">soma_workflow.configuration</span> <span class="kn">as</span> <span class="nn">configuration</span>
+<span class="kn">from</span> <span class="nn">soma_workflow.errors</span> <span class="kn">import</span> <span class="n">TransferError</span><span class="p">,</span> <span class="n">SerializationError</span><span class="p">,</span> <span class="n">SomaWorkflowError</span>
 
 
 <span class="c">#-------------------------------------------------------------------------------</span>
@@ -92,11 +92,11 @@
 <span class="c">#-------------------------------------------------------------------------------</span>
 
 <span class="c"># imports required by the users of soma-workflow API (do not remove):</span>
-<span class="kn">from</span> <span class="nn">soma.workflow.client_types</span> <span class="kn">import</span> <span class="n">Job</span>
-<span class="kn">from</span> <span class="nn">soma.workflow.client_types</span> <span class="kn">import</span> <span class="n">Workflow</span>
-<span class="kn">from</span> <span class="nn">soma.workflow.client_types</span> <span class="kn">import</span> <span class="n">Group</span>
-<span class="kn">from</span> <span class="nn">soma.workflow.client_types</span> <span class="kn">import</span> <span class="n">FileTransfer</span>
-<span class="kn">from</span> <span class="nn">soma.workflow.client_types</span> <span class="kn">import</span> <span class="n">SharedResourcePath</span>
+<span class="kn">from</span> <span class="nn">soma_workflow.client_types</span> <span class="kn">import</span> <span class="n">Job</span>
+<span class="kn">from</span> <span class="nn">soma_workflow.client_types</span> <span class="kn">import</span> <span class="n">Workflow</span>
+<span class="kn">from</span> <span class="nn">soma_workflow.client_types</span> <span class="kn">import</span> <span class="n">Group</span>
+<span class="kn">from</span> <span class="nn">soma_workflow.client_types</span> <span class="kn">import</span> <span class="n">FileTransfer</span>
+<span class="kn">from</span> <span class="nn">soma_workflow.client_types</span> <span class="kn">import</span> <span class="n">SharedResourcePath</span>
 
 
 <div class="viewcode-block" id="WorkflowController"><a class="viewcode-back" href="../client_API.html#client.WorkflowController">[docs]</a><span class="k">class</span> <span class="nc">WorkflowController</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -158,17 +158,20 @@
     <span class="k">else</span><span class="p">:</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="n">config</span>
 
+    <span class="k">if</span> <span class="n">password</span> <span class="o">==</span> <span class="s">&#39;&#39;</span><span class="p">:</span>
+        <span class="n">password</span> <span class="o">=</span><span class="bp">None</span>
+    
     <span class="bp">self</span><span class="o">.</span><span class="n">scheduler_config</span> <span class="o">=</span> <span class="bp">None</span>
 
     <span class="n">mode</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">get_mode</span><span class="p">()</span>
-    <span class="c">#print  mode + &quot; mode&quot;</span>
+    <span class="k">print</span>  <span class="n">mode</span> <span class="o">+</span> <span class="s">&quot; mode&quot;</span>
 
     <span class="bp">self</span><span class="o">.</span><span class="n">_resource_id</span> <span class="o">=</span> <span class="n">resource_id</span>
     
     
-
     <span class="c"># LOCAL MODE</span>
     <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="n">configuration</span><span class="o">.</span><span class="n">LOCAL_MODE</span><span class="p">:</span>
+      
       <span class="bp">self</span><span class="o">.</span><span class="n">_connection</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">LocalConnection</span><span class="p">(</span><span class="n">resource_id</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">_engine_proxy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_connection</span><span class="o">.</span><span class="n">get_workflow_engine</span><span class="p">()</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">engine_config_proxy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_connection</span><span class="o">.</span><span class="n">get_configuration</span><span class="p">()</span>
@@ -182,7 +185,7 @@
       <span class="n">sub_machine</span> <span class="o">=</span> <span class="n">submitting_machines</span><span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span>
                                                     <span class="nb">len</span><span class="p">(</span><span class="n">submitting_machines</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)]</span>
       <span class="n">cluster_address</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">get_cluster_address</span><span class="p">()</span>
-      <span class="c">#print &#39;cluster address: &#39; + cluster_address + &#39; submission machine: &#39; + sub_machine</span>
+      <span class="k">print</span> <span class="s">&#39;cluster address: &#39;</span> <span class="o">+</span> <span class="n">cluster_address</span> <span class="o">+</span> <span class="s">&#39;, submission machine: &#39;</span> <span class="o">+</span> <span class="n">sub_machine</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">_connection</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">RemoteConnection</span><span class="p">(</span><span class="n">login</span><span class="p">,</span>
                                                     <span class="n">password</span><span class="p">,</span>
                                                     <span class="n">cluster_address</span><span class="p">,</span>
@@ -262,8 +265,7 @@
 
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine_config_proxy</span><span class="o">.</span><span class="n">get_scheduler_type</span><span class="p">()</span> <span class="o">==</span> <span class="n">configuration</span><span class="o">.</span><span class="n">MPI_SCHEDULER</span><span class="p">:</span>
       <span class="k">raise</span> <span class="n">SomaWorkflowError</span><span class="p">(</span><span class="s">&quot;The MPI scheduler is configured for this resource. &quot;</span>
-                              <span class="s">&quot;Use soma.workflow.MPI_workflow_runner to submit a workflow using the MPI scheduler.&quot;</span><span class="p">)</span> 
-
+                              <span class="s">&quot;Use soma_workflow.MPI_workflow_runner to submit a workflow using the MPI scheduler.&quot;</span><span class="p">)</span> 
 
     <span class="c">#cProfile.runctx(&quot;wf_id = self._engine_proxy.submit_workflow(workflow, expiration_date, name, queue)&quot;, globals(), locals(), &quot;/home/soizic/profile/profile_submit_workflow&quot;)</span>
 
@@ -301,7 +303,7 @@
     <span class="k">print</span> <span class="s">&quot;The method submit_job is deprecated since version 2.4. Use submit_workflow instead.&quot;</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine_config_proxy</span><span class="o">.</span><span class="n">get_scheduler_type</span><span class="p">()</span> <span class="o">==</span> <span class="n">configuration</span><span class="o">.</span><span class="n">MPI_SCHEDULER</span><span class="p">:</span>
       <span class="k">raise</span> <span class="n">SomaWorkflowError</span><span class="p">(</span><span class="s">&quot;The MPI scheduler is configured for this resource. &quot;</span>
-                              <span class="s">&quot;Use soma.workflow.MPI_workflow_runner to submit a workflow using the MPI scheduler.&quot;</span><span class="p">)</span> 
+                              <span class="s">&quot;Use soma_workflow.MPI_workflow_runner to submit a workflow using the MPI scheduler.&quot;</span><span class="p">)</span> 
 
     <span class="n">job_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine_proxy</span><span class="o">.</span><span class="n">submit_job</span><span class="p">(</span><span class="n">job</span><span class="p">,</span> <span class="n">queue</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">job_id</span>
@@ -552,7 +554,7 @@
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine_config_proxy</span><span class="o">.</span><span class="n">get_scheduler_type</span><span class="p">()</span> <span class="o">==</span> <span class="n">configuration</span><span class="o">.</span><span class="n">MPI_SCHEDULER</span><span class="p">:</span>
       <span class="k">raise</span> <span class="n">SomaWorkflowError</span><span class="p">(</span><span class="s">&quot;The MPI scheduler is configured for this resource. &quot;</span>
-                              <span class="s">&quot;Use soma.workflow.MPI_workflow_runner to restart a workflow using the MPI scheduler.&quot;</span><span class="p">)</span> 
+                              <span class="s">&quot;Use soma_workflow.MPI_workflow_runner to restart a workflow using the MPI scheduler.&quot;</span><span class="p">)</span> 
 
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine_proxy</span><span class="o">.</span><span class="n">restart_workflow</span><span class="p">(</span><span class="n">workflow_id</span><span class="p">,</span> <span class="n">queue</span><span class="p">)</span>
 
@@ -595,7 +597,7 @@
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine_config_proxy</span><span class="o">.</span><span class="n">get_scheduler_type</span><span class="p">()</span> <span class="o">==</span> <span class="n">configuration</span><span class="o">.</span><span class="n">MPI_SCHEDULER</span><span class="p">:</span>
       <span class="k">raise</span> <span class="n">SomaWorkflowError</span><span class="p">(</span><span class="s">&quot;The MPI scheduler is configured for this resource. &quot;</span>
-                              <span class="s">&quot;Kill the soma.workflow.MPI_workflow_runner job to stop the workflow.&quot;</span><span class="p">)</span> 
+                              <span class="s">&quot;Kill the soma_workflow.MPI_workflow_runner job to stop the workflow.&quot;</span><span class="p">)</span> 
 
 
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine_proxy</span><span class="o">.</span><span class="n">stop_workflow</span><span class="p">(</span><span class="n">workflow_id</span><span class="p">)</span>
@@ -961,14 +963,14 @@
 <span class="sd">  Using serveral client process simultaneously (thus several database server</span>
 <span class="sd">  with the same database file) can cause error (notably database locked problems)</span>
 
-<span class="sd">  * config: *soma.workflow.configuration.Configuration*</span>
+<span class="sd">  * config: *soma_workflow.configuration.Configuration*</span>
 
 <span class="sd">  * returns: *WorkflowEngine*</span>
 <span class="sd">  &#39;&#39;&#39;</span>
   <span class="kn">import</span> <span class="nn">logging</span>
 
-  <span class="kn">from</span> <span class="nn">soma.workflow.engine</span> <span class="kn">import</span> <span class="n">WorkflowEngine</span><span class="p">,</span> <span class="n">ConfiguredWorkflowEngine</span>
-  <span class="kn">from</span> <span class="nn">soma.workflow.database_server</span> <span class="kn">import</span> <span class="n">WorkflowDatabaseServer</span>
+  <span class="kn">from</span> <span class="nn">soma_workflow.engine</span> <span class="kn">import</span> <span class="n">WorkflowEngine</span><span class="p">,</span> <span class="n">ConfiguredWorkflowEngine</span>
+  <span class="kn">from</span> <span class="nn">soma_workflow.database_server</span> <span class="kn">import</span> <span class="n">WorkflowDatabaseServer</span>
 
   <span class="p">(</span><span class="n">engine_log_dir</span><span class="p">,</span>
   <span class="n">engine_log_format</span><span class="p">,</span>
@@ -989,14 +991,15 @@
                                            <span class="n">config</span><span class="o">.</span><span class="n">get_transfered_file_dir</span><span class="p">())</span>
 
   <span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">get_scheduler_type</span><span class="p">()</span> <span class="o">==</span> <span class="n">configuration</span><span class="o">.</span><span class="n">DRMAA_SCHEDULER</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">soma.workflow.scheduler</span> <span class="kn">import</span> <span class="n">Drmaa</span>
+    <span class="kn">from</span> <span class="nn">soma_workflow.scheduler</span> <span class="kn">import</span> <span class="n">Drmaa</span>
     <span class="c">#print &quot;scheduler type: drmaa&quot;</span>
-    <span class="n">scheduler</span> <span class="o">=</span> <span class="n">Drmaa</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">get_drmaa_implementation</span><span class="p">(),</span>
-                      <span class="n">config</span><span class="o">.</span><span class="n">get_parallel_job_config</span><span class="p">(),</span>
-                      <span class="n">configured_native_spec</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">get_native_specification</span><span class="p">())</span>
+    <span class="n">scheduler</span> <span class="o">=</span> <span class="n">DrmaaCTypes</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">get_drmaa_implementation</span><span class="p">(),</span>
+                            <span class="n">config</span><span class="o">.</span><span class="n">get_parallel_job_config</span><span class="p">(),</span>
+                            <span class="n">configured_native_spec</span>\
+                            <span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">get_native_specification</span><span class="p">())</span>
 
   <span class="k">elif</span> <span class="n">config</span><span class="o">.</span><span class="n">get_scheduler_type</span><span class="p">()</span> <span class="o">==</span> <span class="n">configuration</span><span class="o">.</span><span class="n">LOCAL_SCHEDULER</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">soma.workflow.scheduler</span> <span class="kn">import</span> <span class="n">ConfiguredLocalScheduler</span>
+    <span class="kn">from</span> <span class="nn">soma_workflow.scheduler</span> <span class="kn">import</span> <span class="n">ConfiguredLocalScheduler</span>
     <span class="k">if</span> <span class="n">local_scheduler_config</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
       <span class="n">local_scheduler_config</span> <span class="o">=</span> <span class="n">LocalSchedulerCfg</span><span class="p">()</span>
     <span class="c">#print &quot;scheduler type: basic, number of cpu: &quot; + repr(local_scheduler_config.get_proc_nb())</span>
@@ -1241,7 +1244,7 @@
                                  <span class="s">&quot;The workflow file may have been created &quot;</span>
                                  <span class="s">&quot;using Python &gt;= 2.6 using the JSON format.</span><span class="se">\n</span><span class="s">&quot;</span>
                                  <span class="s">&quot;Use the converter: </span><span class="se">\n</span><span class="s">&quot;</span>
-                                 <span class="s">&quot;soma.workflow.client.Helper.convert_wf_file_for_p2_5 &quot;</span>
+                                 <span class="s">&quot;soma_workflow.client.Helper.convert_wf_file_for_p2_5 &quot;</span>
                                  <span class="s">&quot; &quot;</span> <span class="o">%</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="p">),</span> <span class="n">e</span><span class="p">))</span>
       <span class="k">try</span><span class="p">:</span>
         <span class="nb">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
@@ -1316,7 +1319,7 @@
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="../index.html">
-              <img class="logo" src="../static/logo_white_small.png" alt="Logo"/>
+              <img class="logo" src="../_static/logo_white_small.png" alt="Logo"/>
             </a></p>
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
@@ -1341,7 +1344,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              >index</a></li>
-        <li><a href="../index.html">soma-workflow developement version documentation</a> &raquo;</li>
+        <li><a href="../index.html">soma-workflow version 2.6 documentation</a> &raquo;</li>
           <li><a href="index.html" >Module code</a> &raquo;</li> 
       </ul>
     </div>

@@ -8,25 +8,25 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Examples &mdash; soma-workflow developement version documentation</title>
+    <title>Examples &mdash; soma-workflow version 2.6 documentation</title>
     
-    <link rel="stylesheet" href="static/default.css" type="text/css" />
-    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '2.5.0',
+        VERSION:     '2.6.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
     </script>
-    <script type="text/javascript" src="static/jquery.js"></script>
-    <script type="text/javascript" src="static/underscore.js"></script>
-    <script type="text/javascript" src="static/doctools.js"></script>
-    <link rel="shortcut icon" href="static/icon_small.png"/>
-    <link rel="top" title="soma-workflow developement version documentation" href="index.html" />
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/icon_small.png"/>
+    <link rel="top" title="soma-workflow version 2.6 documentation" href="index.html" />
     <link rel="next" title="MPI workflow runner —beta—" href="MPI_workflow_runner.html" />
     <link rel="prev" title="Graphical User Interface" href="gui.html" /> 
   </head>
@@ -43,7 +43,7 @@
         <li class="right" >
           <a href="gui.html" title="Graphical User Interface"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">soma-workflow developement version documentation</a> &raquo;</li> 
+        <li><a href="index.html">soma-workflow version 2.6 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -88,10 +88,10 @@ and writing another file.</li>
 <div class="section" id="basic-example">
 <h3><a class="toc-backref" href="#id4">Basic example</a><a class="headerlink" href="#basic-example" title="Permalink to this headline">¶</a></h3>
 <div class="figure">
-<a class="reference internal image-reference" href="images/simple_example.png"><img alt="images/simple_example.png" src="images/simple_example.png" style="width: 166.8px; height: 147.0px;" /></a>
+<a class="reference internal image-reference" href="_images/simple_example.png"><img alt="_images/simple_example.png" src="_images/simple_example.png" style="width: 166.8px; height: 147.0px;" /></a>
 <p class="caption">Simple example: 4 jobs with dependencies.</p>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">soma.workflow.client</span> <span class="kn">import</span> <span class="n">Job</span><span class="p">,</span> <span class="n">Workflow</span><span class="p">,</span> <span class="n">Helper</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">soma_workflow.client</span> <span class="kn">import</span> <span class="n">Job</span><span class="p">,</span> <span class="n">Workflow</span><span class="p">,</span> <span class="n">Helper</span>
 
 
 <span class="c"># create the workflow:</span>
@@ -124,7 +124,7 @@ and writing another file.</li>
 </ul>
 </dd>
 </dl>
-<a class="reference internal image-reference" href="images/simple_example_gui.png"><img alt="images/simple_example_gui.png" src="images/simple_example_gui.png" style="width: 848.4px; height: 509.4px;" /></a>
+<a class="reference internal image-reference" href="_images/simple_example_gui.png"><img alt="_images/simple_example_gui.png" src="_images/simple_example_gui.png" style="width: 848.4px; height: 509.4px;" /></a>
 <div class="admonition-see-also admonition seealso">
 <p class="first admonition-title">See also</p>
 <p class="last">The <a class="reference internal" href="workflow_creation.html#workflow-creation-api"><em>workflow creation API</em></a> for a
@@ -136,10 +136,10 @@ full description of job and workflow options.</p>
 <p>Creating groups can be useful to organize jobs within workflows for displaying
 purpose. Groups do not have any impact on the execution of workflows.</p>
 <div class="figure">
-<a class="reference internal image-reference" href="images/simple_example_group.png"><img alt="images/simple_example_group.png" src="images/simple_example_group.png" style="width: 356.4px; height: 172.2px;" /></a>
+<a class="reference internal image-reference" href="_images/simple_example_group.png"><img alt="_images/simple_example_group.png" src="_images/simple_example_group.png" style="width: 356.4px; height: 172.2px;" /></a>
 <p class="caption">Simple example with a group: 30 jobs are in the group &#8220;my 30 jobs&#8221;.</p>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">soma.workflow.client</span> <span class="kn">import</span> <span class="n">Job</span><span class="p">,</span> <span class="n">Workflow</span><span class="p">,</span> <span class="n">Group</span><span class="p">,</span> <span class="n">Helper</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">soma_workflow.client</span> <span class="kn">import</span> <span class="n">Job</span><span class="p">,</span> <span class="n">Workflow</span><span class="p">,</span> <span class="n">Group</span><span class="p">,</span> <span class="n">Helper</span>
 
 
 <span class="c"># create the workflow:</span>
@@ -177,7 +177,7 @@ purpose. Groups do not have any impact on the execution of workflows.</p>
 </div>
 <p>Run the Python script, then open the GUI (command: &#8220;soma_workflow_gui&#8221;) to
 open, submit and monitor your workflow:</p>
-<a class="reference internal image-reference" href="images/simple_example_group_gui.png"><img alt="images/simple_example_group_gui.png" src="images/simple_example_group_gui.png" style="width: 808.8px; height: 507.6px;" /></a>
+<a class="reference internal image-reference" href="_images/simple_example_group_gui.png"><img alt="_images/simple_example_group_gui.png" src="_images/simple_example_group_gui.png" style="width: 808.8px; height: 507.6px;" /></a>
 <p>The 30 jobs within the group can be extended (visible) or collapsed (hidden).</p>
 </div>
 </div>
@@ -194,7 +194,7 @@ if you close the GUI).</p>
 to a computing resource configured in the client-server mode (remote cluster for
 example), you can submit it directly to the computing resource in the Python
 script instead of saving the workflow into a file:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">soma.workflow.client</span> <span class="kn">import</span> <span class="n">WorkflowController</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">soma_workflow.client</span> <span class="kn">import</span> <span class="n">WorkflowController</span>
 
 <span class="c"># workflow creation as described in the examples</span>
 <span class="c"># no need to save the workflow into a file</span>
@@ -225,7 +225,7 @@ directory and work with relative paths (see <a class="reference internal" href="
 <h3><a class="toc-backref" href="#id8">Basic file transfer</a><a class="headerlink" href="#basic-file-transfer" title="Permalink to this headline">¶</a></h3>
 <p>To run this example, create first the file &#8220;/tmp/soma_workflow_examples/myfile&#8221;
 with any content. It will stand for an input file to transfer.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">soma.workflow.client</span> <span class="kn">import</span> <span class="n">Job</span><span class="p">,</span> <span class="n">Workflow</span><span class="p">,</span> <span class="n">WorkflowController</span><span class="p">,</span> <span class="n">FileTransfer</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">soma_workflow.client</span> <span class="kn">import</span> <span class="n">Job</span><span class="p">,</span> <span class="n">Workflow</span><span class="p">,</span> <span class="n">WorkflowController</span><span class="p">,</span> <span class="n">FileTransfer</span>
 
 <span class="c"># FileTransfer creation for input files</span>
 <span class="n">myfile</span> <span class="o">=</span> <span class="n">FileTransfer</span><span class="p">(</span><span class="n">is_input</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
@@ -256,16 +256,16 @@ with any content. It will stand for an input file to transfer.</p>
 </pre></div>
 </div>
 <p>Run the Python script and open the GUI:</p>
-<a class="reference internal image-reference" href="images/file_transfer_example_gui.png"><img alt="images/file_transfer_example_gui.png" src="images/file_transfer_example_gui.png" style="width: 754.8px; height: 507.6px;" /></a>
+<a class="reference internal image-reference" href="_images/file_transfer_example_gui.png"><img alt="_images/file_transfer_example_gui.png" src="_images/file_transfer_example_gui.png" style="width: 754.8px; height: 507.6px;" /></a>
 <p>Transfer the input files using the &#8220;Transfer Input Files&#8221; button:</p>
-<a class="reference internal image-reference" href="images/file_transfer_example_gui_1.png"><img alt="images/file_transfer_example_gui_1.png" src="images/file_transfer_example_gui_1.png" style="width: 514.4px; height: 187.2px;" /></a>
+<a class="reference internal image-reference" href="_images/file_transfer_example_gui_1.png"><img alt="_images/file_transfer_example_gui_1.png" src="_images/file_transfer_example_gui_1.png" style="width: 514.4px; height: 187.2px;" /></a>
 <p>The job will start as soon as the transfers ended:</p>
-<a class="reference internal image-reference" href="images/file_transfer_example_gui_2.png"><img alt="images/file_transfer_example_gui_2.png" src="images/file_transfer_example_gui_2.png" style="width: 514.4px; height: 185.6px;" /></a>
+<a class="reference internal image-reference" href="_images/file_transfer_example_gui_2.png"><img alt="_images/file_transfer_example_gui_2.png" src="_images/file_transfer_example_gui_2.png" style="width: 514.4px; height: 185.6px;" /></a>
 <p>When the workflow is done, transfer the output files using the
 &#8220;Transfer Output Files&#8221; button:</p>
-<a class="reference internal image-reference" href="images/file_transfer_example_gui_3.png"><img alt="images/file_transfer_example_gui_3.png" src="images/file_transfer_example_gui_3.png" style="width: 514.4px; height: 186.4px;" /></a>
+<a class="reference internal image-reference" href="_images/file_transfer_example_gui_3.png"><img alt="_images/file_transfer_example_gui_3.png" src="_images/file_transfer_example_gui_3.png" style="width: 514.4px; height: 186.4px;" /></a>
 <p>The progression and the end of the transfer are visible in the GUI.</p>
-<a class="reference internal image-reference" href="images/file_transfer_example_gui_4.png"><img alt="images/file_transfer_example_gui_4.png" src="images/file_transfer_example_gui_4.png" style="width: 513.6px; height: 186.4px;" /></a>
+<a class="reference internal image-reference" href="_images/file_transfer_example_gui_4.png"><img alt="_images/file_transfer_example_gui_4.png" src="_images/file_transfer_example_gui_4.png" style="width: 513.6px; height: 186.4px;" /></a>
 <div class="admonition-see-also admonition seealso">
 <p class="first admonition-title">See also</p>
 <p class="last"><a class="reference internal" href="status_list.html#file-transfer-status"><em>File Transfer status</em></a></p>
@@ -278,7 +278,7 @@ containing all the files you need and then use only relative file paths in your
 jobs.</p>
 <p>In this example, the working directory contains 2 files: myfile1 and myfile2.
 The workflow contains 2 jobs which will modify the working directory.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">soma.workflow.client</span> <span class="kn">import</span> <span class="n">Job</span><span class="p">,</span> <span class="n">Workflow</span><span class="p">,</span> <span class="n">WorkflowController</span><span class="p">,</span> <span class="n">FileTransfer</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">soma_workflow.client</span> <span class="kn">import</span> <span class="n">Job</span><span class="p">,</span> <span class="n">Workflow</span><span class="p">,</span> <span class="n">WorkflowController</span><span class="p">,</span> <span class="n">FileTransfer</span>
 
 <span class="c"># Creation of the FileTransfer object to transfer the working directory</span>
 <span class="n">my_working_directory</span> <span class="o">=</span> <span class="n">FileTransfer</span><span class="p">(</span><span class="n">is_input</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
@@ -312,12 +312,12 @@ The workflow contains 2 jobs which will modify the working directory.</p>
 </div>
 <p>Run the Python script and monitor the execution of the workflow using
 the GUI (soma_workflow_gui command):</p>
-<a class="reference internal image-reference" href="images/wd_transfer_example_gui.png"><img alt="images/wd_transfer_example_gui.png" src="images/wd_transfer_example_gui.png" style="width: 657.6px; height: 477.6px;" /></a>
+<a class="reference internal image-reference" href="_images/wd_transfer_example_gui.png"><img alt="_images/wd_transfer_example_gui.png" src="_images/wd_transfer_example_gui.png" style="width: 657.6px; height: 477.6px;" /></a>
 <p>Transfer the working directory to the computing resource using the &#8220;Transfer
 Input Files&#8221; button and wait for the jobs to execute:</p>
-<a class="reference internal image-reference" href="images/wd_transfer_example_gui_1.png"><img alt="images/wd_transfer_example_gui_1.png" src="images/wd_transfer_example_gui_1.png" style="width: 656.0px; height: 481.6px;" /></a>
+<a class="reference internal image-reference" href="_images/wd_transfer_example_gui_1.png"><img alt="_images/wd_transfer_example_gui_1.png" src="_images/wd_transfer_example_gui_1.png" style="width: 656.0px; height: 481.6px;" /></a>
 <p>Transfer the working directory back using the &#8220;Transfer Output Files&#8221; button:</p>
-<a class="reference internal image-reference" href="images/wd_transfer_example_gui_2.png"><img alt="images/wd_transfer_example_gui_2.png" src="images/wd_transfer_example_gui_2.png" style="width: 660.0px; height: 482.4px;" /></a>
+<a class="reference internal image-reference" href="_images/wd_transfer_example_gui_2.png"><img alt="_images/wd_transfer_example_gui_2.png" src="_images/wd_transfer_example_gui_2.png" style="width: 660.0px; height: 482.4px;" /></a>
 <p>The working directory on your machine should now contains the files: myfile1, myfile2,
 copy_of_myfile1 and copy_of_myfile2.</p>
 </div>
@@ -348,7 +348,7 @@ computing resource file system (see <a class="reference internal" href="concepts
 </div>
 </div></blockquote>
 <p>Run the script to create and submit the workflow:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">soma.workflow.client</span> <span class="kn">import</span> <span class="n">Job</span><span class="p">,</span> <span class="n">Workflow</span><span class="p">,</span> <span class="n">WorkflowController</span><span class="p">,</span> <span class="n">SharedResourcePath</span><span class="p">,</span> <span class="n">FileTransfer</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">soma_workflow.client</span> <span class="kn">import</span> <span class="n">Job</span><span class="p">,</span> <span class="n">Workflow</span><span class="p">,</span> <span class="n">WorkflowController</span><span class="p">,</span> <span class="n">SharedResourcePath</span><span class="p">,</span> <span class="n">FileTransfer</span>
 
 <span class="c"># SharedResourcePath creation for the input file.</span>
 <span class="c"># The input file is read direclty in the data directory located on the</span>
@@ -394,7 +394,7 @@ contains the file copy_of_myfile.</p>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="index.html">
-              <img class="logo" src="static/logo_white_small.png" alt="Logo"/>
+              <img class="logo" src="_static/logo_white_small.png" alt="Logo"/>
             </a></p>
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
@@ -423,7 +423,7 @@ contains the file copy_of_myfile.</p>
                         title="next chapter">MPI workflow runner &#8212;<strong>beta</strong>&#8212;</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
-    <li><a href="sources/examples.txt"
+    <li><a href="_sources/examples.txt"
            rel="nofollow">Show Source</a></li>
   </ul>
 <div id="searchbox" style="display: none">
@@ -455,7 +455,7 @@ contains the file copy_of_myfile.</p>
         <li class="right" >
           <a href="gui.html" title="Graphical User Interface"
              >previous</a> |</li>
-        <li><a href="index.html">soma-workflow developement version documentation</a> &raquo;</li> 
+        <li><a href="index.html">soma-workflow version 2.6 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

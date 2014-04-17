@@ -8,25 +8,25 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Installation and configuration &mdash; soma-workflow developement version documentation</title>
+    <title>Installation and configuration &mdash; soma-workflow version 2.6 documentation</title>
     
-    <link rel="stylesheet" href="static/default.css" type="text/css" />
-    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '2.5.0',
+        VERSION:     '2.6.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
     </script>
-    <script type="text/javascript" src="static/jquery.js"></script>
-    <script type="text/javascript" src="static/underscore.js"></script>
-    <script type="text/javascript" src="static/doctools.js"></script>
-    <link rel="shortcut icon" href="static/icon_small.png"/>
-    <link rel="top" title="soma-workflow developement version documentation" href="index.html" />
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/icon_small.png"/>
+    <link rel="top" title="soma-workflow version 2.6 documentation" href="index.html" />
     <link rel="prev" title="Python API" href="client_API.html" /> 
   </head>
   <body>
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="client_API.html" title="Python API"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">soma-workflow developement version documentation</a> &raquo;</li> 
+        <li><a href="index.html">soma-workflow version 2.6 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -53,23 +53,20 @@
 <div class="contents local topic" id="id1">
 <p class="topic-title first">Installation and Configuration</p>
 <ul class="simple">
-<li><a class="reference internal" href="#mono-process-application-on-a-multiple-core-machine" id="id19">Mono process application on a multiple core machine</a></li>
-<li><a class="reference internal" href="#client-server-application-client" id="id20">Client-server application: Client</a></li>
-<li><a class="reference internal" href="#client-server-application-server" id="id21">Client-server application: Server</a></li>
-<li><a class="reference internal" href="#mono-process-application-on-clusters" id="id22">Mono process application on clusters</a></li>
+<li><a class="reference internal" href="#mono-process-application-on-a-multiple-core-machine" id="id16">Mono process application on a multiple core machine</a></li>
+<li><a class="reference internal" href="#client-server-application-client" id="id17">Client-server application: Client</a></li>
+<li><a class="reference internal" href="#client-server-application-server" id="id18">Client-server application: Server</a></li>
+<li><a class="reference internal" href="#mono-process-application-on-clusters" id="id19">Mono process application on clusters</a></li>
 </ul>
 </div>
 <div class="section" id="mono-process-application-on-a-multiple-core-machine">
-<h2><a class="toc-backref" href="#id19">Mono process application on a multiple core machine</a><a class="headerlink" href="#mono-process-application-on-a-multiple-core-machine" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id16">Mono process application on a multiple core machine</a><a class="headerlink" href="#mono-process-application-on-a-multiple-core-machine" title="Permalink to this headline">¶</a></h2>
 <p><strong>No configuration is needed to use Soma-workflow on a multiple core machine.</strong></p>
 <p>See <a class="reference external" href="http://brainvisa.info/soma-workflow">Soma-workflow main page</a> for installation.</p>
 </div>
 <div class="section" id="client-server-application-client">
-<span id="client-intall-config"></span><h2><a class="toc-backref" href="#id20">Client-server application: Client</a><a class="headerlink" href="#client-server-application-client" title="Permalink to this headline">¶</a></h2>
-<p>This page describes the installation and configuration of the Soma-workflow
-client. The installation of a Soma-workflow client supposes that at least one
-Soma-workflow database servers is installed on a remote or a local computing
-resources (see <a class="reference internal" href="#server"><em>Client-server application: Server</em></a>).</p>
+<span id="client-intall-config"></span><h2><a class="toc-backref" href="#id17">Client-server application: Client</a><a class="headerlink" href="#client-server-application-client" title="Permalink to this headline">¶</a></h2>
+<p>This page describes the installation and configuration of the Soma-workflow client.</p>
 <div class="section" id="requirements">
 <h3>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
@@ -83,32 +80,27 @@ only required if the computing resource is remote.</li>
 <div class="section" id="installation">
 <h3>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic">
-<li><p class="first">Download: <a class="reference external" href="ftp://ftp.cea.fr/pub/dsv/anatomist/binary/soma-workflow-2.2.tar.bz2">soma-workflow 2.2</a></p>
+<li><p class="first">Download: <a class="reference external" href="https://pypi.python.org/pypi/soma-workflow">soma-workflow</a></p>
 </li>
 <li><p class="first">Installation:</p>
 <blockquote>
-<div><div class="highlight-python"><pre>$ python setup.py build
-
-$ python setup.py install --prefix my_directory
+<div><div class="highlight-python"><pre>$ sudo python setup.py install
 or
-$ sudo python setup.py install</pre>
+$ python setup.py install --prefix my_directory</pre>
 </div>
 </div></blockquote>
 </li>
-<li><p class="first">Create a configuration file (see <a class="reference internal" href="#client-configuration"><em>Configuration</em></a>) at the location $HOME/.soma-workflow.cfg. You can also choose your own path for the configuration file and set the &#8220;SOMA_WORKFLOW_CONFIG&#8221; environment variable or put it in the /etc/ directory.</p>
-</li>
 </ol>
-<p>Start the GUI with the command <em>soma_workflow_gui</em> and/or import the soma.workflow.client module to use the Python API.</p>
+<p>Start the GUI with the command <em>soma_workflow_gui</em> and/or import the soma_workflow.client module to use the Python API.</p>
 <div class="admonition-see-also admonition seealso">
 <p class="first admonition-title">See also</p>
 <p class="last"><a class="reference internal" href="gui.html#gui"><em>Graphical User Interface</em></a> for the GUI documentation, <a class="reference internal" href="client_API.html#client-api"><em>Python API</em></a> for Soma-workflow Python API documentation and <a class="reference internal" href="examples.html#examples"><em>Examples</em></a>.</p>
 </div>
 </div>
-<div class="section" id="configuration">
-<span id="client-configuration"></span><h3>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h3>
-<p>The configuration syntax is the <a class="reference external" href="http://docs.python.org/library/configparser.html">ConfigParser</a>  syntax.</p>
-<p>There is one section for each computing resource (that is for each Soma-workflow
-database server).</p>
+<div class="section" id="configuration-created-automatically">
+<span id="client-configuration"></span><h3>Configuration (Created automatically)<a class="headerlink" href="#configuration-created-automatically" title="Permalink to this headline">¶</a></h3>
+<p>The configuration syntax is the <a class="reference external" href="http://docs.python.org/library/configparser.html">ConfigParser</a>  syntax. The configuration file is located in &#8220;$HOME/.soma-workflow.cfg&#8221;. This file will be created automatically once a server has been established (see <a class="reference internal" href="#server-management"><em>Server installation using &#8220;Server Management&#8221;</em></a>).</p>
+<p>There is one section for each computing resource (that is for each Soma-workflow database server).</p>
 <p>Only four items are required:</p>
 <blockquote>
 <div><ul class="simple">
@@ -120,7 +112,7 @@ database server).</p>
 </div></blockquote>
 <p>The two first items are mandatory and the last ones are
 optional. The values of these configuration items are set up at each
-Soma-workflow server installation (see <a class="reference internal" href="#server-configuration"><em>Server configuration</em></a>). Ask these item
+Soma-workflow server installation (see <a class="reference internal" href="#server-configuration"><em>Server configuration (Created automatically)</em></a>). Ask these item
 values to the Soma-workflow administrator if you did not install the server yourself.</p>
 <p>Configuration file example (2 computing resources are configured):</p>
 <div class="highlight-python"><pre>[Titan]
@@ -164,7 +156,7 @@ Syntax: &#8220;queue1 queue2 queue3&#8221;</dd>
 </div>
 </div>
 <div class="section" id="client-server-application-server">
-<span id="server"></span><h2><a class="toc-backref" href="#id21">Client-server application: Server</a><a class="headerlink" href="#client-server-application-server" title="Permalink to this headline">¶</a></h2>
+<span id="server"></span><h2><a class="toc-backref" href="#id18">Client-server application: Server</a><a class="headerlink" href="#client-server-application-server" title="Permalink to this headline">¶</a></h2>
 <p>This page explains how to configure, install and run the Soma-workflow
 database server.</p>
 <p>In the client-server mode the communication between the processes is done using
@@ -173,14 +165,13 @@ name server. The Workflow Engines query the Pyro name server for the
 location the database server.</p>
 <div class="section" id="server-requirements">
 <span id="id3"></span><h3>Requirements<a class="headerlink" href="#server-requirements" title="Permalink to this headline">¶</a></h3>
-<a class="reference internal image-reference" href="images/third_parties.png"><img alt="images/third_parties.png" src="images/third_parties.png" style="width: 584.0px; height: 291.2px;" /></a>
+<a class="reference internal image-reference" href="_images/third_parties.png"><img alt="_images/third_parties.png" src="_images/third_parties.png" style="width: 584.0px; height: 291.2px;" /></a>
 <p>Here is the list of the server dependencies:</p>
 <ul class="simple">
 <li>A distributed resource management system (DRMS) such as Grid Engine, Condor,
 Torque/PBS, LSF..</li>
 <li>A implementation of <a class="reference external" href="http://www.drmaa.org/">DRMAA</a> 1.0 for the DRMS in C</li>
 <li>Python <em>version 2.5 or more</em></li>
-<li><a class="reference external" href="http://wiki.python.org/moin/SIP">SIP</a> <em>version 4.10 or more</em></li>
 <li><a class="reference external" href="http://www.xs4all.nl/~irmen/pyro3/">Pyro</a> <em>version 3.10 or more</em></li>
 <li><a class="reference external" href="http://docs.python.org/library/sqlite3.html">SQLite</a> <em>version 3 or more</em></li>
 </ul>
@@ -213,97 +204,25 @@ Torque/PBS, LSF..</li>
 </table>
 </div></blockquote>
 </div>
-<div class="section" id="installation-to-use-with-drmaa">
-<span id="sip-drmaa"></span><h3>Installation to use with DRMAA<a class="headerlink" href="#installation-to-use-with-drmaa" title="Permalink to this headline">¶</a></h3>
-<p>The use of Soma-workflow with DRMAA requires the generation of a SIP Python
-binding for the DRMAA C library. This section describes a way to compile and
-install this binding together with Soma-workflow:</p>
-<ol class="arabic">
-<li><p class="first">Download bv_maker (a CMake customization of the <a class="reference external" href="http://brainvisa.info">BrainVISA project</a>)</p>
-<blockquote>
-<div></div></blockquote>
-</li>
-</ol>
-<blockquote>
-<div><div class="highlight-python"><pre>svn --username brainvisa --password Soma2009 export https://bioproj.extra.cea.fr/neurosvn/brainvisa/source_views/brainvisa-cmake /tmp/brainvisa-cmake
-cd /tmp/brainvisa-cmake
-cmake -DCMAKE_INSTALL_PREFIX=. latest_release
-make install</pre>
+<div class="section" id="server-installation-using-server-management">
+<span id="server-management"></span><h3>Server installation using &#8220;Server Management&#8221;<a class="headerlink" href="#server-installation-using-server-management" title="Permalink to this headline">¶</a></h3>
+<p>In the menu of soma-workflow, we can see a button called, Server Management.
+See the menu of the below figure, we can find a &#8220;Server Management&#8221; button</p>
+<a class="reference internal image-reference" href="_images/ServerManagementMenu.png"><img alt="_images/ServerManagementMenu.png" src="_images/ServerManagementMenu.png" style="width: 723.0px; height: 406.0px;" /></a>
+<p>Opening &#8220;Server Management&#8221; button, and then we can see three buttons, called:
+Add Server, Remove Server, Remove Server on Client, as shown in
+the below figure. Since the configuration is needed for both sides (client and server), &#8220;Remove Server&#8221; means that remove the installation on the server and client (BE CAREFULL: it will lose all your soma-workflow data on your server and client, $HOME/.soma-workflow and $HOME/.soma-workflow.cfg). &#8220;Remove Server on Client&#8221; means that it will remove all the data only on client side, while the server side is still running as usual.</p>
+<a class="reference internal image-reference" href="_images/ServerManagement.png"><img alt="_images/ServerManagement.png" src="_images/ServerManagement.png" style="width: 508.0px; height: 358.0px;" /></a>
+<p>Opening &#8220;Add Server&#8221; button, we can see a window as shown below:</p>
+<a class="reference internal image-reference" href="_images/ServerManagementAddServer.png"><img alt="_images/ServerManagementAddServer.png" src="_images/ServerManagementAddServer.png" style="width: 489.0px; height: 569.0px;" /></a>
+<p>Before the server installation, we strongly recommend to use SSH with authentication key instead of password. See &#8220;<a class="reference external" href="http://askubuntu.com/questions/46930/how-can-i-set-up-password-less-ssh-login">http://askubuntu.com/questions/46930/how-can-i-set-up-password-less-ssh-login</a>&#8221;. Otherwise, you need to input password each time. We should setup the Server Address, SSH Login, while the other items are optional. (password is not mandatory when you are using authentication key)</p>
+<p>Since the configuration is needed for both sides (client and server),
+the first button, called &#8220;Install on Server and Client&#8221;, is used for configuring both sides. Since many clients can connect to one server, &#8220;Setup Client without Installation on Server&#8221; is used for configurating only client side.</p>
+<p>Since soma-workflow is based on the DRMAA on the server side, to make sure that your LD_LIBRARY_PATH contains libdrmaa.so or export DRMAA_LIBRARY_PATH to the absolute path of libdrmaa.so on your server.</p>
 </div>
-</div></blockquote>
-<ol class="arabic simple" start="2">
-<li>Create the file: $HOME/.brainvisa/bv_maker.cfg with the content:</li>
-</ol>
-<blockquote>
-<div><div class="highlight-python"><pre>[source &lt;source_directory&gt;]
-  + soma-workflow latest_release
-
-[build &lt;build_directory&gt;]
-  soma-workflow latest_release &lt;source_directory&gt;</pre>
-</div>
-<p>replacing &lt;source_directory&gt; and &lt;build_directory&gt; by the paths you choose
-for Soma-workflow. For example:</p>
-<div class="highlight-python"><pre>[source $HOME/soma-workflow/source]
-  + soma-workflow latest_release
-
-[build $HOME/soma-workflow/build]
-  soma-workflow latest_release $HOME/soma-workflow/source</pre>
-</div>
-<p>Note that you can also replace &#8220;latest_release&#8221; to obtain another version: for
-example: &#8220;2.1.0&#8221; or trunk&#8221; for the version in development or &#8220;bug_fix&#8221;
-for the bug fixes of the latest release.</p>
-</div></blockquote>
-<ol class="arabic simple" start="3">
-<li>Download Soma-workflow sources (use username &#8220;brainvisa&#8221; and password &#8220;Soma2009&#8221; if needed), configure and build with CMake and make:</li>
-</ol>
-<blockquote>
-<div><div class="highlight-python"><pre>/tmp/brainvisa-cmake/bin/bv_maker sources
-
-/tmp/brainvisa-cmake/bin/bv_maker configure
-
-/tmp/brainvisa-cmake/bin/bv_maker build</pre>
-</div>
-</div></blockquote>
-<ol class="arabic simple" start="4">
-<li>You can remove the temporary directory</li>
-</ol>
-<blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre><span class="n">rm</span> <span class="o">-</span><span class="n">rf</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">brainvisa</span><span class="o">-</span><span class="n">cmake</span>
-</pre></div>
-</div>
-</div></blockquote>
-<ol class="arabic simple" start="5">
-<li>Set the environment variables:</li>
-</ol>
-<blockquote>
-<div><div class="highlight-python"><pre>. &lt;build_directory&gt;/bin/bv_env.sh &lt;build_directory&gt;</pre>
-</div>
-</div></blockquote>
-</div>
-<div class="section" id="server-creation">
-<span id="server-installation"></span><h3>Server creation<a class="headerlink" href="#server-creation" title="Permalink to this headline">¶</a></h3>
-<ol class="arabic simple">
-<li>Install the Soma-workflow python modules and generate the SIP Python binding for the DRMAA C library if needed. (see <a class="reference internal" href="#sip-drmaa"><em>Installation to use with DRMAA</em></a>)</li>
-<li>Choose a resource identifier for the computing resource, ex: &#8220;Titan&#8221;</li>
-<li>Create a configuration file (see <a class="reference internal" href="#server-configuration"><em>Server configuration</em></a>) at the location $HOME/.soma-workflow.cfg. You can also choose your own path for the configuration file and set the &#8220;SOMA_WORKFLOW_CONFIG&#8221; environment variable with this path or put it in the /etc/ directory.</li>
-</ol>
-<ol class="arabic simple" start="2">
-<li>Start a Pyro name server with the command pyro-ns -m</li>
-</ol>
-<ol class="arabic simple" start="4">
-<li>Run the command python -m soma.workflow.start_database_server &#8220;Titan&#8221;. The command will:</li>
-</ol>
-<blockquote>
-<div><ul class="simple">
-<li>start the database server</li>
-<li>create the SQLite database if the database file does not exist</li>
-<li>register the database server to the Pyro name server</li>
-</ul>
-</div></blockquote>
-</div>
-<div class="section" id="server-configuration">
-<span id="id5"></span><h3>Server configuration<a class="headerlink" href="#server-configuration" title="Permalink to this headline">¶</a></h3>
-<p>This section defines the required and optional configuration items.</p>
+<div class="section" id="server-configuration-created-automatically">
+<span id="server-configuration"></span><h3>Server configuration (Created automatically)<a class="headerlink" href="#server-configuration-created-automatically" title="Permalink to this headline">¶</a></h3>
+<p>This section defines the required and optional configuration items. This file can be found on the both side of client and server with the path &#8220;$HOME/.soma-workflow.cfg&#8221;.</p>
 <p>The configuration file syntax is the <a class="reference external" href="http://docs.python.org/library/configparser.html">ConfigParser</a>  syntax. All the configuration items are defined in one section. The name of
 the section is the resource identifier (ex: &#8220;Titan&#8221;).</p>
 <p>Configuration file example:</p>
@@ -373,7 +292,7 @@ otherwise it does not has to be set.
 Soma-workflow is designed to be independent of the DRMS and the DRMAA
 implementation. However, we found two bugs in the FedStage PBS DRMAA 1.0
 implementation, and correct it temporarily writing specific code for this
-implementation in Soma-workflow at 2 locations (soma.workflow.engine Drmaa
+implementation in Soma-workflow at 2 locations (soma_workflow.engine Drmaa
 class: __init__ and submit_job method).</dd>
 <dt><strong>NATIVE_SPECIFICATION</strong></dt>
 <dd><p class="first">Some specific option/function of the computing resource you want to use
@@ -422,11 +341,11 @@ uses several CPUs and involves parallel code: MPI, OpenMP for example.</p>
 </div>
 </div>
 <div class="section" id="mono-process-application-on-clusters">
-<span id="light-mode-config"></span><h2><a class="toc-backref" href="#id22">Mono process application on clusters</a><a class="headerlink" href="#mono-process-application-on-clusters" title="Permalink to this headline">¶</a></h2>
+<span id="light-mode-config"></span><h2><a class="toc-backref" href="#id19">Mono process application on clusters</a><a class="headerlink" href="#mono-process-application-on-clusters" title="Permalink to this headline">¶</a></h2>
 <p>This mode is called light mode, it is the installation you need if you are
 not interested in the remote access and disconnection features (see <a class="reference internal" href="concepts.html#client-server-application-concept"><em>More features with the client-server application</em></a>)</p>
-<div class="section" id="id10">
-<h3>Requirements<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id9">
+<h3>Requirements<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <p>The requirements are identical to the server installation requirements.
 If you do not intend to access an other computing resource with the remote
 access feature, the installation of Pyro can be skipped.</p>
@@ -436,17 +355,15 @@ access feature, the installation of Pyro can be skipped.</p>
 Torque/PBS, LSF..</li>
 <li>A implementation of <a class="reference external" href="http://www.drmaa.org/">DRMAA</a> 1.0 for the DRMS in C</li>
 <li>Python <em>version 2.5 or more</em></li>
-<li><a class="reference external" href="http://wiki.python.org/moin/SIP">SIP</a> <em>version 4.10 or more</em></li>
 <li>SQLite <em>version 3 or more</em></li>
 <li>For the GUI: Qt <em>version 4.6.2 or more</em>, <a class="reference external" href="http://www.riverbankcomputing.co.uk/software/pyqt/intro">PyQt</a> <em>version 4.7.2 or more</em>, or <a class="reference external" href="http://www.pyside.org">PySide</a> <em>version 1.1.1</em> or more, and optionally <a class="reference external" href="http://matplotlib.sourceforge.net/">matplotlib</a> <em>version 0.99 or more</em></li>
 </ul>
 <p>More details about the implementation of DRMAA can be found in the server
 installation section (see <a class="reference internal" href="#server-requirements"><em>Requirements</em></a>).</p>
 </div>
-<div class="section" id="id16">
-<h3>Installation<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id14">
+<h3>Installation<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
-<li>Install the Soma-workflow python modules and generate the SIP Python binding for the DRMAA C library if needed. (see <a class="reference internal" href="#sip-drmaa"><em>Installation to use with DRMAA</em></a>)</li>
 <li>Choose a resource identifier for the computing resource, ex: &#8220;Local Titan&#8221;</li>
 <li>Create a configuration file (see <a class="reference internal" href="#light-mode-configuration"><em>Configuration</em></a>) at the location $HOME/.soma-workflow.cfg. You can also choose your own path for the configuration file and set the &#8220;SOMA_WORKFLOW_CONFIG&#8221; environment variable with this path or put it in the /etc/ directory.</li>
 </ol>
@@ -456,8 +373,8 @@ installation section (see <a class="reference internal" href="#server-requiremen
 <p class="last"><a class="reference internal" href="gui.html#gui"><em>Graphical User Interface</em></a> for the GUI documentation, <a class="reference internal" href="client_API.html#client-api"><em>Python API</em></a> for Soma-workflow Python API documentation and <a class="reference internal" href="examples.html#examples"><em>Examples</em></a>.</p>
 </div>
 </div>
-<div class="section" id="light-mode-configuration">
-<span id="id17"></span><h3>Configuration<a class="headerlink" href="#light-mode-configuration" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="configuration">
+<span id="light-mode-configuration"></span><h3>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h3>
 <p>This section defines the required and optional configuration items for the light
 mode.</p>
 <p>The configuration file syntax is the <a class="reference external" href="http://docs.python.org/library/configparser.html">ConfigParser</a>  syntax. All the
@@ -496,7 +413,7 @@ entire directory and might delete any external file.</p>
 <p><em>Optional configuration items:</em></p>
 <blockquote>
 <div>Many optional configuration item can be added to customize the installation, see
-<a class="reference internal" href="#server-configuration"><em>Server configuration</em></a> for a full list of the items and their description.</div></blockquote>
+<a class="reference internal" href="#server-configuration"><em>Server configuration (Created automatically)</em></a> for a full list of the items and their description.</div></blockquote>
 </div>
 </div>
 </div>
@@ -508,7 +425,7 @@ entire directory and might delete any external file.</p>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="index.html">
-              <img class="logo" src="static/logo_white_small.png" alt="Logo"/>
+              <img class="logo" src="_static/logo_white_small.png" alt="Logo"/>
             </a></p>
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
@@ -517,14 +434,13 @@ entire directory and might delete any external file.</p>
 <li><a class="reference internal" href="#client-server-application-client">Client-server application: Client</a><ul>
 <li><a class="reference internal" href="#requirements">Requirements</a></li>
 <li><a class="reference internal" href="#installation">Installation</a></li>
-<li><a class="reference internal" href="#configuration">Configuration</a></li>
+<li><a class="reference internal" href="#configuration-created-automatically">Configuration (Created automatically)</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#client-server-application-server">Client-server application: Server</a><ul>
 <li><a class="reference internal" href="#server-requirements">Requirements</a></li>
-<li><a class="reference internal" href="#installation-to-use-with-drmaa">Installation to use with DRMAA</a></li>
-<li><a class="reference internal" href="#server-creation">Server creation</a></li>
-<li><a class="reference internal" href="#server-configuration">Server configuration</a><ul>
+<li><a class="reference internal" href="#server-installation-using-server-management">Server installation using &#8220;Server Management&#8221;</a></li>
+<li><a class="reference internal" href="#server-configuration-created-automatically">Server configuration (Created automatically)</a><ul>
 <li><a class="reference internal" href="#configuration-items-required-on-the-server-side">Configuration items required on the server side:</a></li>
 <li><a class="reference internal" href="#configuration-items-optional-on-the-server-side">Configuration items optional on the server side:</a></li>
 <li><a class="reference internal" href="#parallel-job-configuration">Parallel job configuration:</a></li>
@@ -533,9 +449,9 @@ entire directory and might delete any external file.</p>
 </ul>
 </li>
 <li><a class="reference internal" href="#mono-process-application-on-clusters">Mono process application on clusters</a><ul>
-<li><a class="reference internal" href="#id10">Requirements</a></li>
-<li><a class="reference internal" href="#id16">Installation</a></li>
-<li><a class="reference internal" href="#light-mode-configuration">Configuration</a></li>
+<li><a class="reference internal" href="#id9">Requirements</a></li>
+<li><a class="reference internal" href="#id14">Installation</a></li>
+<li><a class="reference internal" href="#configuration">Configuration</a></li>
 </ul>
 </li>
 </ul>
@@ -547,7 +463,7 @@ entire directory and might delete any external file.</p>
                         title="previous chapter">Python API</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
-    <li><a href="sources/install_config.txt"
+    <li><a href="_sources/install_config.txt"
            rel="nofollow">Show Source</a></li>
   </ul>
 <div id="searchbox" style="display: none">
@@ -576,7 +492,7 @@ entire directory and might delete any external file.</p>
         <li class="right" >
           <a href="client_API.html" title="Python API"
              >previous</a> |</li>
-        <li><a href="index.html">soma-workflow developement version documentation</a> &raquo;</li> 
+        <li><a href="index.html">soma-workflow version 2.6 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

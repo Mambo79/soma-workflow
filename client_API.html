@@ -8,25 +8,25 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Python API &mdash; soma-workflow developement version documentation</title>
+    <title>Python API &mdash; soma-workflow version 2.6 documentation</title>
     
-    <link rel="stylesheet" href="static/default.css" type="text/css" />
-    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '2.5.0',
+        VERSION:     '2.6.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
     </script>
-    <script type="text/javascript" src="static/jquery.js"></script>
-    <script type="text/javascript" src="static/underscore.js"></script>
-    <script type="text/javascript" src="static/doctools.js"></script>
-    <link rel="shortcut icon" href="static/icon_small.png"/>
-    <link rel="top" title="soma-workflow developement version documentation" href="index.html" />
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/icon_small.png"/>
+    <link rel="top" title="soma-workflow version 2.6 documentation" href="index.html" />
     <link rel="next" title="Installation and configuration" href="install_config.html" />
     <link rel="prev" title="Workflow creation API" href="workflow_creation.html" /> 
   </head>
@@ -43,7 +43,7 @@
         <li class="right" >
           <a href="workflow_creation.html" title="Workflow creation API"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">soma-workflow developement version documentation</a> &raquo;</li> 
+        <li><a href="index.html">soma-workflow version 2.6 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -59,7 +59,7 @@ done through the client.WorkflowController interface.</p>
 <p>This page presents the documentation of the client.WorkflowController class.</p>
 <dl class="class">
 <dt id="client.WorkflowController">
-<em class="property">class </em><tt class="descclassname">client.</tt><tt class="descname">WorkflowController</tt><big>(</big><em>object</em><big>)</big><a class="reference internal" href="modules/client.html#WorkflowController"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.WorkflowController" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">client.</tt><tt class="descname">WorkflowController</tt><big>(</big><em>object</em><big>)</big><a class="reference internal" href="_modules/client.html#WorkflowController"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.WorkflowController" title="Permalink to this definition">¶</a></dt>
 <dd><p>Submission, control and monitoring of Job, FileTransfer and Workflow
 objects.</p>
 </dd></dl>
@@ -89,7 +89,7 @@ objects.</p>
 <h2><a class="toc-backref" href="#id4">Setup the connection with the computing resource</a><a class="headerlink" href="#setup-the-connection-with-the-computing-resource" title="Permalink to this headline">¶</a></h2>
 <dl class="method">
 <dt id="client.WorkflowController.__init__">
-<tt class="descclassname">WorkflowController.</tt><tt class="descname">__init__</tt><big>(</big><em>resource_id=None</em>, <em>login=None</em>, <em>password=None</em>, <em>config=None</em>, <em>rsa_key_pass=None</em><big>)</big><a class="reference internal" href="modules/client.html#WorkflowController.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.WorkflowController.__init__" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">WorkflowController.</tt><tt class="descname">__init__</tt><big>(</big><em>resource_id=None</em>, <em>login=None</em>, <em>password=None</em>, <em>config=None</em>, <em>rsa_key_pass=None</em><big>)</big><a class="reference internal" href="_modules/client.html#WorkflowController.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.WorkflowController.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets up the connection to the computing resource.
 Looks for a soma-workflow configuration file (if not specified in the
 <em>config</em> argument).</p>
@@ -138,7 +138,7 @@ configured to log on the remote machine with ssh.</p>
 <h2><a class="toc-backref" href="#id5">Submission / Registration</a><a class="headerlink" href="#submission-registration" title="Permalink to this headline">¶</a></h2>
 <dl class="method">
 <dt id="client.WorkflowController.submit_workflow">
-<tt class="descclassname">WorkflowController.</tt><tt class="descname">submit_workflow</tt><big>(</big><em>workflow</em>, <em>expiration_date=None</em>, <em>name=None</em>, <em>queue=None</em><big>)</big><a class="reference internal" href="modules/client.html#WorkflowController.submit_workflow"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.WorkflowController.submit_workflow" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">WorkflowController.</tt><tt class="descname">submit_workflow</tt><big>(</big><em>workflow</em>, <em>expiration_date=None</em>, <em>name=None</em>, <em>queue=None</em><big>)</big><a class="reference internal" href="_modules/client.html#WorkflowController.submit_workflow"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.WorkflowController.submit_workflow" title="Permalink to this definition">¶</a></dt>
 <dd><p>Submits a workflow and returns a workflow identifier.</p>
 <ul>
 <li><dl class="first docutils">
@@ -178,7 +178,7 @@ the jobs will be submitted to the default queue.</p>
 
 <dl class="method">
 <dt id="client.WorkflowController.submit_job">
-<tt class="descclassname">WorkflowController.</tt><tt class="descname">submit_job</tt><big>(</big><em>job</em>, <em>queue=None</em><big>)</big><a class="reference internal" href="modules/client.html#WorkflowController.submit_job"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.WorkflowController.submit_job" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">WorkflowController.</tt><tt class="descname">submit_job</tt><big>(</big><em>job</em>, <em>queue=None</em><big>)</big><a class="reference internal" href="_modules/client.html#WorkflowController.submit_job"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.WorkflowController.submit_job" title="Permalink to this definition">¶</a></dt>
 <dd><p><strong>deprecated since version 2.4:</strong> Use submit_workflow instead.</p>
 <p>Submits a job which is not part of a workflow.
 Returns a job identifier.</p>
@@ -205,7 +205,7 @@ Job identifier.</p>
 
 <dl class="method">
 <dt id="client.WorkflowController.register_transfer">
-<tt class="descclassname">WorkflowController.</tt><tt class="descname">register_transfer</tt><big>(</big><em>file_transfer</em><big>)</big><a class="reference internal" href="modules/client.html#WorkflowController.register_transfer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.WorkflowController.register_transfer" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">WorkflowController.</tt><tt class="descname">register_transfer</tt><big>(</big><em>file_transfer</em><big>)</big><a class="reference internal" href="_modules/client.html#WorkflowController.register_transfer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.WorkflowController.register_transfer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Registers a file transfer which is not part of a workflow and returns a
 file transfer identifier.</p>
 <ul class="simple">
@@ -219,7 +219,7 @@ file transfer identifier.</p>
 <h2><a class="toc-backref" href="#id6">User&#8217;s Workflows, Jobs, and FileTransfers retrieval</a><a class="headerlink" href="#user-s-workflows-jobs-and-filetransfers-retrieval" title="Permalink to this headline">¶</a></h2>
 <dl class="method">
 <dt id="client.WorkflowController.workflow">
-<tt class="descclassname">WorkflowController.</tt><tt class="descname">workflow</tt><big>(</big><em>workflow_id</em><big>)</big><a class="reference internal" href="modules/client.html#WorkflowController.workflow"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.WorkflowController.workflow" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">WorkflowController.</tt><tt class="descname">workflow</tt><big>(</big><em>workflow_id</em><big>)</big><a class="reference internal" href="_modules/client.html#WorkflowController.workflow"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.WorkflowController.workflow" title="Permalink to this definition">¶</a></dt>
 <dd><ul class="simple">
 <li>workflow_id <em>workflow_identifier</em></li>
 <li>returns: <em>Workflow</em></li>
@@ -229,7 +229,7 @@ file transfer identifier.</p>
 
 <dl class="method">
 <dt id="client.WorkflowController.workflows">
-<tt class="descclassname">WorkflowController.</tt><tt class="descname">workflows</tt><big>(</big><em>workflow_ids=None</em><big>)</big><a class="reference internal" href="modules/client.html#WorkflowController.workflows"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.WorkflowController.workflows" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">WorkflowController.</tt><tt class="descname">workflows</tt><big>(</big><em>workflow_ids=None</em><big>)</big><a class="reference internal" href="_modules/client.html#WorkflowController.workflows"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.WorkflowController.workflows" title="Permalink to this definition">¶</a></dt>
 <dd><p>Lists the identifiers and general information about all the workflows
 submitted by the user, or about the workflows specified in the
 <em>workflow_ids</em> argument.</p>
@@ -247,7 +247,7 @@ submitted by the user, or about the workflows specified in the
 
 <dl class="method">
 <dt id="client.WorkflowController.jobs">
-<tt class="descclassname">WorkflowController.</tt><tt class="descname">jobs</tt><big>(</big><em>job_ids=None</em><big>)</big><a class="reference internal" href="modules/client.html#WorkflowController.jobs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.WorkflowController.jobs" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">WorkflowController.</tt><tt class="descname">jobs</tt><big>(</big><em>job_ids=None</em><big>)</big><a class="reference internal" href="_modules/client.html#WorkflowController.jobs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.WorkflowController.jobs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Lists the identifiers and general information about all the jobs submitted
 by the user and which are not part of a workflow, or about the jobs
 specified in the <em>job_ids</em> argument.</p>
@@ -265,7 +265,7 @@ specified in the <em>job_ids</em> argument.</p>
 
 <dl class="method">
 <dt id="client.WorkflowController.transfers">
-<tt class="descclassname">WorkflowController.</tt><tt class="descname">transfers</tt><big>(</big><em>transfer_ids=None</em><big>)</big><a class="reference internal" href="modules/client.html#WorkflowController.transfers"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.WorkflowController.transfers" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">WorkflowController.</tt><tt class="descname">transfers</tt><big>(</big><em>transfer_ids=None</em><big>)</big><a class="reference internal" href="_modules/client.html#WorkflowController.transfers"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.WorkflowController.transfers" title="Permalink to this definition">¶</a></dt>
 <dd><p>Lists the identifiers and information about all the user&#8217;s file transfers
 which are not part of a workflow or about the file transfers specified in
 the <em>transfer_ids</em> argument.</p>
@@ -299,7 +299,7 @@ job has declared this file as output or input.</li>
 <h3><a class="toc-backref" href="#id8">Workflows</a><a class="headerlink" href="#workflows" title="Permalink to this headline">¶</a></h3>
 <dl class="method">
 <dt id="client.WorkflowController.workflow_status">
-<tt class="descclassname">WorkflowController.</tt><tt class="descname">workflow_status</tt><big>(</big><em>workflow_id</em><big>)</big><a class="reference internal" href="modules/client.html#WorkflowController.workflow_status"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.WorkflowController.workflow_status" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">WorkflowController.</tt><tt class="descname">workflow_status</tt><big>(</big><em>workflow_id</em><big>)</big><a class="reference internal" href="_modules/client.html#WorkflowController.workflow_status"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.WorkflowController.workflow_status" title="Permalink to this definition">¶</a></dt>
 <dd><ul>
 <li><p class="first">workflow_id <em>workflow identifier</em></p>
 </li>
@@ -316,7 +316,7 @@ constants.WORKFLOW_STATUS list.</p>
 
 <dl class="method">
 <dt id="client.WorkflowController.workflow_elements_status">
-<tt class="descclassname">WorkflowController.</tt><tt class="descname">workflow_elements_status</tt><big>(</big><em>workflow_id</em><big>)</big><a class="reference internal" href="modules/client.html#WorkflowController.workflow_elements_status"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.WorkflowController.workflow_elements_status" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">WorkflowController.</tt><tt class="descname">workflow_elements_status</tt><big>(</big><em>workflow_id</em><big>)</big><a class="reference internal" href="_modules/client.html#WorkflowController.workflow_elements_status"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.WorkflowController.workflow_elements_status" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets back the status of all the workflow elements at once, minimizing the
 communication with the server and request to the database.
 TO DO =&gt; make it more user friendly.</p>
@@ -334,7 +334,7 @@ TO DO =&gt; make it more user friendly.</p>
 <h3><a class="toc-backref" href="#id9">Jobs</a><a class="headerlink" href="#jobs" title="Permalink to this headline">¶</a></h3>
 <dl class="method">
 <dt id="client.WorkflowController.job_status">
-<tt class="descclassname">WorkflowController.</tt><tt class="descname">job_status</tt><big>(</big><em>job_id</em><big>)</big><a class="reference internal" href="modules/client.html#WorkflowController.job_status"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.WorkflowController.job_status" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">WorkflowController.</tt><tt class="descname">job_status</tt><big>(</big><em>job_id</em><big>)</big><a class="reference internal" href="_modules/client.html#WorkflowController.job_status"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.WorkflowController.job_status" title="Permalink to this definition">¶</a></dt>
 <dd><ul>
 <li><p class="first">job_id <em>job identifier</em></p>
 </li>
@@ -351,7 +351,7 @@ constants.JOB_STATUS.</p>
 
 <dl class="method">
 <dt id="client.WorkflowController.job_termination_status">
-<tt class="descclassname">WorkflowController.</tt><tt class="descname">job_termination_status</tt><big>(</big><em>job_id</em><big>)</big><a class="reference internal" href="modules/client.html#WorkflowController.job_termination_status"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.WorkflowController.job_termination_status" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">WorkflowController.</tt><tt class="descname">job_termination_status</tt><big>(</big><em>job_id</em><big>)</big><a class="reference internal" href="_modules/client.html#WorkflowController.job_termination_status"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.WorkflowController.job_termination_status" title="Permalink to this definition">¶</a></dt>
 <dd><p>Information related to the end of the job.</p>
 <ul>
 <li><p class="first">job_id <em>job identifier</em></p>
@@ -379,7 +379,7 @@ The information provided depends on the DRMS and DRMAA implementation.</li>
 
 <dl class="method">
 <dt id="client.WorkflowController.retrieve_job_stdouterr">
-<tt class="descclassname">WorkflowController.</tt><tt class="descname">retrieve_job_stdouterr</tt><big>(</big><em>job_id</em>, <em>stdout_file_path</em>, <em>stderr_file_path=None</em>, <em>buffer_size=262144</em><big>)</big><a class="reference internal" href="modules/client.html#WorkflowController.retrieve_job_stdouterr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.WorkflowController.retrieve_job_stdouterr" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">WorkflowController.</tt><tt class="descname">retrieve_job_stdouterr</tt><big>(</big><em>job_id</em>, <em>stdout_file_path</em>, <em>stderr_file_path=None</em>, <em>buffer_size=262144</em><big>)</big><a class="reference internal" href="_modules/client.html#WorkflowController.retrieve_job_stdouterr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.WorkflowController.retrieve_job_stdouterr" title="Permalink to this definition">¶</a></dt>
 <dd><p>Copies the job standard output and error to specified file.</p>
 <ul>
 <li><p class="first">job_id <em>job identifier</em></p>
@@ -411,7 +411,7 @@ The information provided depends on the DRMS and DRMAA implementation.</li>
 <h3><a class="toc-backref" href="#id10">File Transfers</a><a class="headerlink" href="#file-transfers" title="Permalink to this headline">¶</a></h3>
 <dl class="method">
 <dt id="client.WorkflowController.transfer_status">
-<tt class="descclassname">WorkflowController.</tt><tt class="descname">transfer_status</tt><big>(</big><em>transfer_id</em><big>)</big><a class="reference internal" href="modules/client.html#WorkflowController.transfer_status"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.WorkflowController.transfer_status" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">WorkflowController.</tt><tt class="descname">transfer_status</tt><big>(</big><em>transfer_id</em><big>)</big><a class="reference internal" href="_modules/client.html#WorkflowController.transfer_status"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.WorkflowController.transfer_status" title="Permalink to this definition">¶</a></dt>
 <dd><p>File transfer status and information related to the transfer progress.</p>
 <ul>
 <li><p class="first">transfer_id <em>transfer identifier</em></p>
@@ -442,7 +442,7 @@ tuple (cumulated size, sequence of tuple (relative_path, file_size, size already
 <h3><a class="toc-backref" href="#id12">Workflows</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <dl class="method">
 <dt id="client.WorkflowController.stop_workflow">
-<tt class="descclassname">WorkflowController.</tt><tt class="descname">stop_workflow</tt><big>(</big><em>workflow_id</em><big>)</big><a class="reference internal" href="modules/client.html#WorkflowController.stop_workflow"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.WorkflowController.stop_workflow" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">WorkflowController.</tt><tt class="descname">stop_workflow</tt><big>(</big><em>workflow_id</em><big>)</big><a class="reference internal" href="_modules/client.html#WorkflowController.stop_workflow"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.WorkflowController.stop_workflow" title="Permalink to this definition">¶</a></dt>
 <dd><p>Stops a workflow.
 The running jobs will be killed.
 The jobs in queues will be removed from queues.
@@ -460,7 +460,7 @@ despite the workflow was stopped.</div></blockquote>
 
 <dl class="method">
 <dt id="client.WorkflowController.restart_workflow">
-<tt class="descclassname">WorkflowController.</tt><tt class="descname">restart_workflow</tt><big>(</big><em>workflow_id</em>, <em>queue=None</em><big>)</big><a class="reference internal" href="modules/client.html#WorkflowController.restart_workflow"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.WorkflowController.restart_workflow" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">WorkflowController.</tt><tt class="descname">restart_workflow</tt><big>(</big><em>workflow_id</em>, <em>queue=None</em><big>)</big><a class="reference internal" href="_modules/client.html#WorkflowController.restart_workflow"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.WorkflowController.restart_workflow" title="Permalink to this definition">¶</a></dt>
 <dd><p>Restarts the jobs of the workflow which failed. The jobs will be submitted
 again.
 The workflow status has to be constants.WORKFLOW_DONE.</p>
@@ -486,7 +486,7 @@ the jobs will be submitted to the default queue.</p>
 
 <dl class="method">
 <dt id="client.WorkflowController.delete_workflow">
-<tt class="descclassname">WorkflowController.</tt><tt class="descname">delete_workflow</tt><big>(</big><em>workflow_id</em>, <em>force=True</em><big>)</big><a class="reference internal" href="modules/client.html#WorkflowController.delete_workflow"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.WorkflowController.delete_workflow" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">WorkflowController.</tt><tt class="descname">delete_workflow</tt><big>(</big><em>workflow_id</em>, <em>force=True</em><big>)</big><a class="reference internal" href="_modules/client.html#WorkflowController.delete_workflow"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.WorkflowController.delete_workflow" title="Permalink to this definition">¶</a></dt>
 <dd><p>Deletes the workflow and all its associated elements (FileTransfers and
 Jobs). The worklfow_id will become invalid and can not be used anymore.
 The workflow jobs which are running will be killed.
@@ -504,7 +504,7 @@ running they are not be killed. In this case the return value is False.</p>
 
 <dl class="method">
 <dt id="client.WorkflowController.change_workflow_expiration_date">
-<tt class="descclassname">WorkflowController.</tt><tt class="descname">change_workflow_expiration_date</tt><big>(</big><em>workflow_id</em>, <em>new_expiration_date</em><big>)</big><a class="reference internal" href="modules/client.html#WorkflowController.change_workflow_expiration_date"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.WorkflowController.change_workflow_expiration_date" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">WorkflowController.</tt><tt class="descname">change_workflow_expiration_date</tt><big>(</big><em>workflow_id</em>, <em>new_expiration_date</em><big>)</big><a class="reference internal" href="_modules/client.html#WorkflowController.change_workflow_expiration_date"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.WorkflowController.change_workflow_expiration_date" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets a new expiration date for the workflow.</p>
 <ul>
 <li><p class="first">workflow_id <em>workflow identifier</em></p>
@@ -526,7 +526,7 @@ running they are not be killed. In this case the return value is False.</p>
 <h3><a class="toc-backref" href="#id13">Jobs</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <dl class="method">
 <dt id="client.WorkflowController.wait_job">
-<tt class="descclassname">WorkflowController.</tt><tt class="descname">wait_job</tt><big>(</big><em>job_ids</em>, <em>timeout=-1</em><big>)</big><a class="reference internal" href="modules/client.html#WorkflowController.wait_job"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.WorkflowController.wait_job" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">WorkflowController.</tt><tt class="descname">wait_job</tt><big>(</big><em>job_ids</em>, <em>timeout=-1</em><big>)</big><a class="reference internal" href="_modules/client.html#WorkflowController.wait_job"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.WorkflowController.wait_job" title="Permalink to this definition">¶</a></dt>
 <dd><p>Waits for all the specified jobs to finish.</p>
 <ul>
 <li><dl class="first docutils">
@@ -548,7 +548,7 @@ A negative value means that the method will wait indefinetely.</p>
 
 <dl class="method">
 <dt id="client.WorkflowController.kill_job">
-<tt class="descclassname">WorkflowController.</tt><tt class="descname">kill_job</tt><big>(</big><em>job_id</em><big>)</big><a class="reference internal" href="modules/client.html#WorkflowController.kill_job"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.WorkflowController.kill_job" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">WorkflowController.</tt><tt class="descname">kill_job</tt><big>(</big><em>job_id</em><big>)</big><a class="reference internal" href="_modules/client.html#WorkflowController.kill_job"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.WorkflowController.kill_job" title="Permalink to this definition">¶</a></dt>
 <dd><p><strong>deprecated since version 2.4:</strong> Use stop_workflow instead.</p>
 <p>Kills a running job. The job will not be deleted from the system (the job
 identifier remains valid).
@@ -558,7 +558,7 @@ Use the restart_job method to restart the job.</p>
 
 <dl class="method">
 <dt id="client.WorkflowController.restart_job">
-<tt class="descclassname">WorkflowController.</tt><tt class="descname">restart_job</tt><big>(</big><em>job_id</em><big>)</big><a class="reference internal" href="modules/client.html#WorkflowController.restart_job"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.WorkflowController.restart_job" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">WorkflowController.</tt><tt class="descname">restart_job</tt><big>(</big><em>job_id</em><big>)</big><a class="reference internal" href="_modules/client.html#WorkflowController.restart_job"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.WorkflowController.restart_job" title="Permalink to this definition">¶</a></dt>
 <dd><p><strong>deprecated since version 2.4:</strong> Use restart_workflow instead.</p>
 <p>Restarts a job which status is constants.FAILED or constants.WARNING.</p>
 <ul>
@@ -576,7 +576,7 @@ Use the restart_job method to restart the job.</p>
 
 <dl class="method">
 <dt id="client.WorkflowController.delete_job">
-<tt class="descclassname">WorkflowController.</tt><tt class="descname">delete_job</tt><big>(</big><em>job_id</em>, <em>force=True</em><big>)</big><a class="reference internal" href="modules/client.html#WorkflowController.delete_job"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.WorkflowController.delete_job" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">WorkflowController.</tt><tt class="descname">delete_job</tt><big>(</big><em>job_id</em>, <em>force=True</em><big>)</big><a class="reference internal" href="_modules/client.html#WorkflowController.delete_job"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.WorkflowController.delete_job" title="Permalink to this definition">¶</a></dt>
 <dd><p><strong>deprecated since version 2.4:</strong> Use delete_workflow instead.</p>
 <p>Deletes a job which is not part of a workflow.
 The job_id will become invalid and can not be used anymore.
@@ -595,7 +595,7 @@ the workflow doesn&#8217;t exist.</li>
 <h3><a class="toc-backref" href="#id14">File Transfers</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <dl class="method">
 <dt id="client.WorkflowController.transfer_files">
-<tt class="descclassname">WorkflowController.</tt><tt class="descname">transfer_files</tt><big>(</big><em>transfer_ids</em>, <em>buffer_size=262144</em><big>)</big><a class="reference internal" href="modules/client.html#WorkflowController.transfer_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.WorkflowController.transfer_files" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">WorkflowController.</tt><tt class="descname">transfer_files</tt><big>(</big><em>transfer_ids</em>, <em>buffer_size=262144</em><big>)</big><a class="reference internal" href="_modules/client.html#WorkflowController.transfer_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.WorkflowController.transfer_files" title="Permalink to this definition">¶</a></dt>
 <dd><p>Transfer file(s) associated to the transfer_id.
 If the files are only located on the client side (that is the transfer
 status is constants.FILES_ON_CLIENT) the file(s) will be transfered from the
@@ -628,7 +628,7 @@ argument.</p>
 
 <dl class="method">
 <dt id="client.WorkflowController.delete_transfer">
-<tt class="descclassname">WorkflowController.</tt><tt class="descname">delete_transfer</tt><big>(</big><em>transfer_id</em><big>)</big><a class="reference internal" href="modules/client.html#WorkflowController.delete_transfer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.WorkflowController.delete_transfer" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">WorkflowController.</tt><tt class="descname">delete_transfer</tt><big>(</big><em>transfer_id</em><big>)</big><a class="reference internal" href="_modules/client.html#WorkflowController.delete_transfer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.WorkflowController.delete_transfer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Deletes the FileTransfer and the associated files and directories on the
 computing resource side. The transfer_id will become invalid and can not be
 used anymore. If some jobs reference the FileTransfer as an input or an
@@ -643,7 +643,7 @@ jobs will be deleted.</p>
 <h2><a class="toc-backref" href="#id15">Helper</a><a class="headerlink" href="#helper" title="Permalink to this headline">¶</a></h2>
 <dl class="staticmethod">
 <dt id="client.Helper.list_failed_jobs">
-<em class="property">static </em><tt class="descclassname">Helper.</tt><tt class="descname">list_failed_jobs</tt><big>(</big><em>workflow_id</em>, <em>wf_ctrl</em>, <em>include_aborted_jobs=False</em>, <em>include_user_killed_jobs=False</em><big>)</big><a class="reference internal" href="modules/client.html#Helper.list_failed_jobs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.Helper.list_failed_jobs" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><tt class="descclassname">Helper.</tt><tt class="descname">list_failed_jobs</tt><big>(</big><em>workflow_id</em>, <em>wf_ctrl</em>, <em>include_aborted_jobs=False</em>, <em>include_user_killed_jobs=False</em><big>)</big><a class="reference internal" href="_modules/client.html#Helper.list_failed_jobs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.Helper.list_failed_jobs" title="Permalink to this definition">¶</a></dt>
 <dd><p>To spot the problematic jobs in a workflow.</p>
 <ul class="simple">
 <li>workflow_id <em>workflow identifier</em></li>
@@ -659,7 +659,7 @@ or which exit value is not 0.</li>
 
 <dl class="staticmethod">
 <dt id="client.Helper.delete_all_workflows">
-<em class="property">static </em><tt class="descclassname">Helper.</tt><tt class="descname">delete_all_workflows</tt><big>(</big><em>wf_ctrl</em>, <em>force=True</em><big>)</big><a class="reference internal" href="modules/client.html#Helper.delete_all_workflows"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.Helper.delete_all_workflows" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><tt class="descclassname">Helper.</tt><tt class="descname">delete_all_workflows</tt><big>(</big><em>wf_ctrl</em>, <em>force=True</em><big>)</big><a class="reference internal" href="_modules/client.html#Helper.delete_all_workflows"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.Helper.delete_all_workflows" title="Permalink to this definition">¶</a></dt>
 <dd><p>Delete all the workflows.
 If force is set to True: the call will block until the workflows are
 deleted. With force set to True, if a workflow can not be deleted properly
@@ -674,7 +674,7 @@ running they will not be killed. In this case the return value is False.</p>
 
 <dl class="staticmethod">
 <dt id="client.Helper.wait_workflow">
-<em class="property">static </em><tt class="descclassname">Helper.</tt><tt class="descname">wait_workflow</tt><big>(</big><em>workflow_id</em>, <em>wf_ctrl</em><big>)</big><a class="reference internal" href="modules/client.html#Helper.wait_workflow"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.Helper.wait_workflow" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><tt class="descclassname">Helper.</tt><tt class="descname">wait_workflow</tt><big>(</big><em>workflow_id</em>, <em>wf_ctrl</em><big>)</big><a class="reference internal" href="_modules/client.html#Helper.wait_workflow"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.Helper.wait_workflow" title="Permalink to this definition">¶</a></dt>
 <dd><p>Waits for workflow execution to end.</p>
 <ul class="simple">
 <li>workflow_id <em>workflow identifier</em></li>
@@ -684,7 +684,7 @@ running they will not be killed. In this case the return value is False.</p>
 
 <dl class="staticmethod">
 <dt id="client.Helper.transfer_input_files">
-<em class="property">static </em><tt class="descclassname">Helper.</tt><tt class="descname">transfer_input_files</tt><big>(</big><em>workflow_id</em>, <em>wf_ctrl</em>, <em>buffer_size=262144</em><big>)</big><a class="reference internal" href="modules/client.html#Helper.transfer_input_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.Helper.transfer_input_files" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><tt class="descclassname">Helper.</tt><tt class="descname">transfer_input_files</tt><big>(</big><em>workflow_id</em>, <em>wf_ctrl</em>, <em>buffer_size=262144</em><big>)</big><a class="reference internal" href="_modules/client.html#Helper.transfer_input_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.Helper.transfer_input_files" title="Permalink to this definition">¶</a></dt>
 <dd><p>Transfers all the input files of a workflow.</p>
 <ul>
 <li><p class="first">workflow_id <em>workflow identifier</em></p>
@@ -704,7 +704,7 @@ argument.</p>
 
 <dl class="staticmethod">
 <dt id="client.Helper.transfer_output_files">
-<em class="property">static </em><tt class="descclassname">Helper.</tt><tt class="descname">transfer_output_files</tt><big>(</big><em>workflow_id</em>, <em>wf_ctrl</em>, <em>buffer_size=262144</em><big>)</big><a class="reference internal" href="modules/client.html#Helper.transfer_output_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.Helper.transfer_output_files" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><tt class="descclassname">Helper.</tt><tt class="descname">transfer_output_files</tt><big>(</big><em>workflow_id</em>, <em>wf_ctrl</em>, <em>buffer_size=262144</em><big>)</big><a class="reference internal" href="_modules/client.html#Helper.transfer_output_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.Helper.transfer_output_files" title="Permalink to this definition">¶</a></dt>
 <dd><p>Transfers all the output files of a workflow which are ready to transfer.</p>
 <ul>
 <li><p class="first">workflow_id <em>workflow identifier</em></p>
@@ -724,7 +724,7 @@ argument.</p>
 
 <dl class="staticmethod">
 <dt id="client.Helper.serialize">
-<em class="property">static </em><tt class="descclassname">Helper.</tt><tt class="descname">serialize</tt><big>(</big><em>file_path</em>, <em>workflow</em><big>)</big><a class="reference internal" href="modules/client.html#Helper.serialize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.Helper.serialize" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><tt class="descclassname">Helper.</tt><tt class="descname">serialize</tt><big>(</big><em>file_path</em>, <em>workflow</em><big>)</big><a class="reference internal" href="_modules/client.html#Helper.serialize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.Helper.serialize" title="Permalink to this definition">¶</a></dt>
 <dd><p>Saves a workflow to a file.
 Uses JSON format if Python &gt;= 2.6, Python pickle otherwise.</p>
 <ul class="simple">
@@ -736,7 +736,7 @@ Uses JSON format if Python &gt;= 2.6, Python pickle otherwise.</p>
 
 <dl class="staticmethod">
 <dt id="client.Helper.unserialize">
-<em class="property">static </em><tt class="descclassname">Helper.</tt><tt class="descname">unserialize</tt><big>(</big><em>file_path</em><big>)</big><a class="reference internal" href="modules/client.html#Helper.unserialize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.Helper.unserialize" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><tt class="descclassname">Helper.</tt><tt class="descname">unserialize</tt><big>(</big><em>file_path</em><big>)</big><a class="reference internal" href="_modules/client.html#Helper.unserialize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.Helper.unserialize" title="Permalink to this definition">¶</a></dt>
 <dd><p>Loads a workflow from a file.
 Opens JSON format or pickle if Python &gt;= 2.6, only Python pickle otherwise 
 (see the method: Helper.convert_wf_file_for_p2_5).</p>
@@ -749,7 +749,7 @@ Opens JSON format or pickle if Python &gt;= 2.6, only Python pickle otherwise
 
 <dl class="staticmethod">
 <dt id="client.Helper.convert_wf_file_for_p2_5">
-<em class="property">static </em><tt class="descclassname">Helper.</tt><tt class="descname">convert_wf_file_for_p2_5</tt><big>(</big><em>origin_file_path</em>, <em>target_file_path</em><big>)</big><a class="reference internal" href="modules/client.html#Helper.convert_wf_file_for_p2_5"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.Helper.convert_wf_file_for_p2_5" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><tt class="descclassname">Helper.</tt><tt class="descname">convert_wf_file_for_p2_5</tt><big>(</big><em>origin_file_path</em>, <em>target_file_path</em><big>)</big><a class="reference internal" href="_modules/client.html#Helper.convert_wf_file_for_p2_5"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.Helper.convert_wf_file_for_p2_5" title="Permalink to this definition">¶</a></dt>
 <dd><p>This method requires Python &gt;= 2.6.
 It converts a workflow file created using Python &gt;= 2.6 to workflow file
 usable in Python 2.5.</p>
@@ -765,7 +765,7 @@ usable in Python 2.5.</p>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="index.html">
-              <img class="logo" src="static/logo_white_small.png" alt="Logo"/>
+              <img class="logo" src="_static/logo_white_small.png" alt="Logo"/>
             </a></p>
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
@@ -798,7 +798,7 @@ usable in Python 2.5.</p>
                         title="next chapter">Installation and configuration</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
-    <li><a href="sources/client_API.txt"
+    <li><a href="_sources/client_API.txt"
            rel="nofollow">Show Source</a></li>
   </ul>
 <div id="searchbox" style="display: none">
@@ -830,7 +830,7 @@ usable in Python 2.5.</p>
         <li class="right" >
           <a href="workflow_creation.html" title="Workflow creation API"
              >previous</a> |</li>
-        <li><a href="index.html">soma-workflow developement version documentation</a> &raquo;</li> 
+        <li><a href="index.html">soma-workflow version 2.6 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

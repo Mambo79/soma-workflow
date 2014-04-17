@@ -8,25 +8,25 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Tips, Good Practices and Errors &mdash; soma-workflow developement version documentation</title>
+    <title>Tips, Good Practices and Errors &mdash; soma-workflow version 2.6 documentation</title>
     
-    <link rel="stylesheet" href="static/default.css" type="text/css" />
-    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '2.5.0',
+        VERSION:     '2.6.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
     </script>
-    <script type="text/javascript" src="static/jquery.js"></script>
-    <script type="text/javascript" src="static/underscore.js"></script>
-    <script type="text/javascript" src="static/doctools.js"></script>
-    <link rel="shortcut icon" href="static/icon_small.png"/>
-    <link rel="top" title="soma-workflow developement version documentation" href="index.html" />
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/icon_small.png"/>
+    <link rel="top" title="soma-workflow version 2.6 documentation" href="index.html" />
     <link rel="next" title="Status list" href="status_list.html" />
     <link rel="prev" title="MPI workflow runner —beta—" href="MPI_workflow_runner.html" /> 
   </head>
@@ -43,7 +43,7 @@
         <li class="right" >
           <a href="MPI_workflow_runner.html" title="MPI workflow runner —beta—"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">soma-workflow developement version documentation</a> &raquo;</li> 
+        <li><a href="index.html">soma-workflow version 2.6 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -72,7 +72,7 @@ defined in the workflow are always satisfied.</p>
 <p>Job priorities can be used, for example, to obtain intermediate results more
 quickly in a workflow:</p>
 <div class="figure">
-<a class="reference internal image-reference" href="images/without_priority.png"><img alt="images/without_priority.png" src="images/without_priority.png" style="width: 469.0px; height: 191.8px;" /></a>
+<a class="reference internal image-reference" href="_images/without_priority.png"><img alt="_images/without_priority.png" src="_images/without_priority.png" style="width: 469.0px; height: 191.8px;" /></a>
 <p class="caption"><em>Without job priority: depending on the number of cpu available the
 tendency will be to execute all the &#8220;brain extraction&#8221; jobs, then all
 the &#8220;gray/white segmentation&#8221; jobs and so on. As a consequence, the result
@@ -80,7 +80,7 @@ of the whole processing of the first subject will be available late in the
 workflow execution.</em></p>
 </div>
 <div class="last figure">
-<a class="reference internal image-reference" href="images/with_priority.png"><img alt="images/with_priority.png" src="images/with_priority.png" style="width: 469.0px; height: 210.0px;" /></a>
+<a class="reference internal image-reference" href="_images/with_priority.png"><img alt="_images/with_priority.png" src="_images/with_priority.png" style="width: 469.0px; height: 210.0px;" /></a>
 <p class="caption"><em>With job priorities: the &#8220;sulci recognition&#8221; jobs have higher priority.
 Depending of the number of cpu available, the &#8220;sulci recognition&#8221; jobs will
 tend to be executed before all the &#8220;brain extraction&#8221; and
@@ -130,7 +130,7 @@ configured login will be used to prefill the GUI.</li>
 <dd>Everything you do through Soma-workflow is done with your user id on the
 computing resource.</dd>
 <dt><strong>Choose an appropriate queue to run your workflows depending on the job size.</strong></dt>
-<dd>See <a class="reference internal" href="install_config.html#client-configuration"><em>Configuration</em></a> to configure the queues so that they will appear
+<dd>See <a class="reference internal" href="install_config.html#client-configuration"><em>Configuration (Created automatically)</em></a> to configure the queues so that they will appear
 in the GUI.</dd>
 <dt><strong>Use the queue limitation feature.</strong></dt>
 <dd><p class="first">Because workflows can contain a lot of jobs, it is very useful to limit the
@@ -165,12 +165,8 @@ can intercalate their own jobs and because of the system delay, it can take
 more time to get all the jobs running.</p>
 </div>
 </dd>
-<dt><strong>Run one database server by user.</strong></dt>
-<dd>Since the sqlite database server is a bottleneck for now, you are advised to
-run one database server by user. In the future versions, the idea will be to
-keep one database server by user, however the server will not need to be
-started manually, but be started and killed automatically by Soma-workflow
-when required.</dd>
+<dt><strong>One database per user.</strong></dt>
+<dd>The soma-workflow will start one database when the user connects to the server.</dd>
 </dl>
 </div>
 <div class="section" id="good-practices-in-general">
@@ -192,58 +188,58 @@ on a multiple core machine.</dd>
 Soma-workflow.</p>
 <dl class="class">
 <dt id="errors.ConfigurationError">
-<em class="property">class </em><tt class="descclassname">errors.</tt><tt class="descname">ConfigurationError</tt><big>(</big><em>Exception</em><big>)</big><a class="reference internal" href="modules/errors.html#ConfigurationError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#errors.ConfigurationError" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">errors.</tt><tt class="descname">ConfigurationError</tt><big>(</big><em>Exception</em><big>)</big><a class="reference internal" href="_modules/errors.html#ConfigurationError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#errors.ConfigurationError" title="Permalink to this definition">¶</a></dt>
 <dd><p>Raised when the configuration is not correct or when configuration
 items are missing.</p>
 </dd></dl>
 
 <dl class="class">
 <dt id="errors.ConnectionError">
-<em class="property">class </em><tt class="descclassname">errors.</tt><tt class="descname">ConnectionError</tt><big>(</big><em>Exception</em><big>)</big><a class="reference internal" href="modules/errors.html#ConnectionError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#errors.ConnectionError" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">errors.</tt><tt class="descname">ConnectionError</tt><big>(</big><em>Exception</em><big>)</big><a class="reference internal" href="_modules/errors.html#ConnectionError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#errors.ConnectionError" title="Permalink to this definition">¶</a></dt>
 <dd><p>Raised when the connection could not be set up with the computing 
 resource and/or the database server.</p>
 </dd></dl>
 
 <dl class="class">
 <dt id="errors.DRMError">
-<em class="property">class </em><tt class="descclassname">errors.</tt><tt class="descname">DRMError</tt><big>(</big><em>Exception</em><big>)</big><a class="reference internal" href="modules/errors.html#DRMError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#errors.DRMError" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">errors.</tt><tt class="descname">DRMError</tt><big>(</big><em>Exception</em><big>)</big><a class="reference internal" href="_modules/errors.html#DRMError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#errors.DRMError" title="Permalink to this definition">¶</a></dt>
 <dd><p>DRMAA session error or DRMS error.</p>
 </dd></dl>
 
 <dl class="class">
 <dt id="errors.JobError">
-<em class="property">class </em><tt class="descclassname">errors.</tt><tt class="descname">JobError</tt><big>(</big><em>Exception</em><big>)</big><a class="reference internal" href="modules/errors.html#JobError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#errors.JobError" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">errors.</tt><tt class="descname">JobError</tt><big>(</big><em>Exception</em><big>)</big><a class="reference internal" href="_modules/errors.html#JobError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#errors.JobError" title="Permalink to this definition">¶</a></dt>
 <dd><p>Raised when an incorrect Job is submitted to soma-workflow.</p>
 </dd></dl>
 
 <dl class="class">
 <dt id="errors.WorkflowError">
-<em class="property">class </em><tt class="descclassname">errors.</tt><tt class="descname">WorkflowError</tt><big>(</big><em>Exception</em><big>)</big><a class="reference internal" href="modules/errors.html#WorkflowError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#errors.WorkflowError" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">errors.</tt><tt class="descname">WorkflowError</tt><big>(</big><em>Exception</em><big>)</big><a class="reference internal" href="_modules/errors.html#WorkflowError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#errors.WorkflowError" title="Permalink to this definition">¶</a></dt>
 <dd><p>Raised when an incorrect Workflow is submitted to soma-workflow.</p>
 </dd></dl>
 
 <dl class="class">
 <dt id="errors.TransferError">
-<em class="property">class </em><tt class="descclassname">errors.</tt><tt class="descname">TransferError</tt><big>(</big><em>Exception</em><big>)</big><a class="reference internal" href="modules/errors.html#TransferError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#errors.TransferError" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">errors.</tt><tt class="descname">TransferError</tt><big>(</big><em>Exception</em><big>)</big><a class="reference internal" href="_modules/errors.html#TransferError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#errors.TransferError" title="Permalink to this definition">¶</a></dt>
 <dd><p>Raised when an incorrect Transfer is submitted to soma_workflow, or when an error occurs during a file transfer.</p>
 </dd></dl>
 
 <dl class="class">
 <dt id="errors.UnknownObjectError">
-<em class="property">class </em><tt class="descclassname">errors.</tt><tt class="descname">UnknownObjectError</tt><big>(</big><em>Exception</em><big>)</big><a class="reference internal" href="modules/errors.html#UnknownObjectError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#errors.UnknownObjectError" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">errors.</tt><tt class="descname">UnknownObjectError</tt><big>(</big><em>Exception</em><big>)</big><a class="reference internal" href="_modules/errors.html#UnknownObjectError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#errors.UnknownObjectError" title="Permalink to this definition">¶</a></dt>
 <dd><p>Raised when an operation is attempted on Jobs, Workflows or Transfers which
 do not exist or do not belong to the user.</p>
 </dd></dl>
 
 <dl class="class">
 <dt id="errors.EngineError">
-<em class="property">class </em><tt class="descclassname">errors.</tt><tt class="descname">EngineError</tt><big>(</big><em>Exception</em><big>)</big><a class="reference internal" href="modules/errors.html#EngineError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#errors.EngineError" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">errors.</tt><tt class="descname">EngineError</tt><big>(</big><em>Exception</em><big>)</big><a class="reference internal" href="_modules/errors.html#EngineError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#errors.EngineError" title="Permalink to this definition">¶</a></dt>
 <dd><p>Raised if an error occurs while starting the workflow engine.</p>
 </dd></dl>
 
 <dl class="class">
 <dt id="errors.DatabaseError">
-<em class="property">class </em><tt class="descclassname">errors.</tt><tt class="descname">DatabaseError</tt><big>(</big><em>Exception</em><big>)</big><a class="reference internal" href="modules/errors.html#DatabaseError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#errors.DatabaseError" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">errors.</tt><tt class="descname">DatabaseError</tt><big>(</big><em>Exception</em><big>)</big><a class="reference internal" href="_modules/errors.html#DatabaseError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#errors.DatabaseError" title="Permalink to this definition">¶</a></dt>
 <dd><p>Raised if an error occurs while reading or writing to the database.</p>
 </dd></dl>
 
@@ -257,7 +253,7 @@ do not exist or do not belong to the user.</p>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="index.html">
-              <img class="logo" src="static/logo_white_small.png" alt="Logo"/>
+              <img class="logo" src="_static/logo_white_small.png" alt="Logo"/>
             </a></p>
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
@@ -278,7 +274,7 @@ do not exist or do not belong to the user.</p>
                         title="next chapter">Status list</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
-    <li><a href="sources/errors_troubleshooting.txt"
+    <li><a href="_sources/errors_troubleshooting.txt"
            rel="nofollow">Show Source</a></li>
   </ul>
 <div id="searchbox" style="display: none">
@@ -310,7 +306,7 @@ do not exist or do not belong to the user.</p>
         <li class="right" >
           <a href="MPI_workflow_runner.html" title="MPI workflow runner —beta—"
              >previous</a> |</li>
-        <li><a href="index.html">soma-workflow developement version documentation</a> &raquo;</li> 
+        <li><a href="index.html">soma-workflow version 2.6 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

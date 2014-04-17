@@ -8,25 +8,25 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>MPI workflow runner —beta— &mdash; soma-workflow developement version documentation</title>
+    <title>MPI workflow runner —beta— &mdash; soma-workflow version 2.6 documentation</title>
     
-    <link rel="stylesheet" href="static/default.css" type="text/css" />
-    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '2.5.0',
+        VERSION:     '2.6.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
     </script>
-    <script type="text/javascript" src="static/jquery.js"></script>
-    <script type="text/javascript" src="static/underscore.js"></script>
-    <script type="text/javascript" src="static/doctools.js"></script>
-    <link rel="shortcut icon" href="static/icon_small.png"/>
-    <link rel="top" title="soma-workflow developement version documentation" href="index.html" />
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/icon_small.png"/>
+    <link rel="top" title="soma-workflow version 2.6 documentation" href="index.html" />
     <link rel="next" title="Tips, Good Practices and Errors" href="errors_troubleshooting.html" />
     <link rel="prev" title="Examples" href="examples.html" /> 
   </head>
@@ -43,7 +43,7 @@
         <li class="right" >
           <a href="examples.html" title="Examples"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">soma-workflow developement version documentation</a> &raquo;</li> 
+        <li><a href="index.html">soma-workflow version 2.6 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -62,8 +62,8 @@
 </ul>
 </dd>
 </dl>
-<a class="reference internal image-reference" href="images/sw_high_throughput.png"><img alt="images/sw_high_throughput.png" src="images/sw_high_throughput.png" style="width: 438.6px; height: 309.0px;" /></a>
-<a class="reference internal image-reference" href="images/sw_low_throughput.png"><img alt="images/sw_low_throughput.png" src="images/sw_low_throughput.png" style="width: 462.6px; height: 304.2px;" /></a>
+<a class="reference internal image-reference" href="_images/sw_high_throughput.png"><img alt="_images/sw_high_throughput.png" src="_images/sw_high_throughput.png" style="width: 438.6px; height: 309.0px;" /></a>
+<a class="reference internal image-reference" href="_images/sw_low_throughput.png"><img alt="_images/sw_low_throughput.png" src="_images/sw_low_throughput.png" style="width: 462.6px; height: 304.2px;" /></a>
 <dl class="docutils">
 <dt>This mode makes it possible:</dt>
 <dd><ul class="first last simple">
@@ -128,7 +128,7 @@ ENGINE_LOG_LEVEL  = ERROR</pre>
 </div>
 <div class="section" id="mpi-workflow-runner-options">
 <h2>MPI_workflow_runner options:<a class="headerlink" href="#mpi-workflow-runner-options" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><pre>$ python -m soma.workflow.MPI_workflow_runner --help
+<div class="highlight-python"><pre>$ python -m soma_workflow.MPI_workflow_runner --help
 Usage: MPI_workflow_runner.py [options]
 
 Options:
@@ -153,7 +153,7 @@ Options:
 #PBS -l nodes=3:ppn=8
 #PBS -q long
 
-time mpirun python -m soma.workflow.MPI_workflow_runner Titan_MPI --workflow $HOME/my_workflow_file</pre>
+time mpirun python -m soma_workflow.MPI_workflow_runner Titan_MPI --workflow $HOME/my_workflow_file</pre>
 </div>
 <p>In the example, the workflow will run on 8 cores of 3 nodes (that is 8*3 cpus). It will be submitted to the &#8220;long&#8221; queue, and will last at most 10 hours.</p>
 <p>Use the following command to submit the script to the cluster, and thus start the workflow execution:</p>
@@ -172,7 +172,7 @@ Use the following submission script to restart the workflow:</p>
 #PBS -l nodes=3:ppn=8
 #PBS -q long
 
-time mpirun python -m soma.workflow.MPI_workflow_runner Titan_MPI --restart 520</pre>
+time mpirun python -m soma_workflow.MPI_workflow_runner Titan_MPI --restart 520</pre>
 </div>
 <p>As before, use &#8220;qsub&#8221; to submit the workflow and possibly &#8220;qdel&#8221; to stop it.</p>
 </div>
@@ -183,7 +183,7 @@ time mpirun python -m soma.workflow.MPI_workflow_runner Titan_MPI --restart 520<
 <li>It is safer to run only one MPI workflow runner at the same time</li>
 <li>As in the following example, some workflows might result of a waste of CPU time.</li>
 </ul>
-<a class="reference internal image-reference" href="images/sw_low_throughput_wasted_cpus.png"><img alt="images/sw_low_throughput_wasted_cpus.png" src="images/sw_low_throughput_wasted_cpus.png" style="width: 814.8px; height: 304.2px;" /></a>
+<a class="reference internal image-reference" href="_images/sw_low_throughput_wasted_cpus.png"><img alt="_images/sw_low_throughput_wasted_cpus.png" src="_images/sw_low_throughput_wasted_cpus.png" style="width: 814.8px; height: 304.2px;" /></a>
 </div>
 </div>
 
@@ -194,7 +194,7 @@ time mpirun python -m soma.workflow.MPI_workflow_runner Titan_MPI --restart 520<
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="index.html">
-              <img class="logo" src="static/logo_white_small.png" alt="Logo"/>
+              <img class="logo" src="_static/logo_white_small.png" alt="Logo"/>
             </a></p>
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
@@ -217,7 +217,7 @@ time mpirun python -m soma.workflow.MPI_workflow_runner Titan_MPI --restart 520<
                         title="next chapter">Tips, Good Practices and Errors</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
-    <li><a href="sources/MPI_workflow_runner.txt"
+    <li><a href="_sources/MPI_workflow_runner.txt"
            rel="nofollow">Show Source</a></li>
   </ul>
 <div id="searchbox" style="display: none">
@@ -249,7 +249,7 @@ time mpirun python -m soma.workflow.MPI_workflow_runner Titan_MPI --restart 520<
         <li class="right" >
           <a href="examples.html" title="Examples"
              >previous</a> |</li>
-        <li><a href="index.html">soma-workflow developement version documentation</a> &raquo;</li> 
+        <li><a href="index.html">soma-workflow version 2.6 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
