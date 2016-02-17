@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -8,15 +6,15 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Installation and configuration &mdash; soma-workflow version 2.6 documentation</title>
+    <title>Installation and configuration &mdash; soma-workflow version 2.8 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
-        VERSION:     '2.6.0',
+        URL_ROOT:    './',
+        VERSION:     '2.8.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,8 +23,8 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="shortcut icon" href="_static/icon_small.png"/>
-    <link rel="top" title="soma-workflow version 2.6 documentation" href="index.html" />
+    <link rel="shortcut icon" href="_static/icon_small.ico"/>
+    <link rel="top" title="soma-workflow version 2.8 documentation" href="index.html" />
     <link rel="prev" title="Python API" href="client_API.html" /> 
   </head>
   <body>
@@ -39,7 +37,7 @@
         <li class="right" >
           <a href="client_API.html" title="Python API"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">soma-workflow version 2.6 documentation</a> &raquo;</li> 
+        <li><a href="index.html">soma-workflow version 2.8 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -57,6 +55,7 @@
 <li><a class="reference internal" href="#client-server-application-client" id="id17">Client-server application: Client</a></li>
 <li><a class="reference internal" href="#client-server-application-server" id="id18">Client-server application: Server</a></li>
 <li><a class="reference internal" href="#mono-process-application-on-clusters" id="id19">Mono process application on clusters</a></li>
+<li><a class="reference internal" href="#server-configuration-examples" id="id20">Server configuration examples</a></li>
 </ul>
 </div>
 <div class="section" id="mono-process-application-on-a-multiple-core-machine">
@@ -84,15 +83,16 @@ only required if the computing resource is remote.</li>
 </li>
 <li><p class="first">Installation:</p>
 <blockquote>
-<div><div class="highlight-python"><pre>$ sudo python setup.py install
+<div><div class="highlight-python"><div class="highlight"><pre>$ sudo python setup.py install
 or
-$ python setup.py install --prefix my_directory</pre>
+$ python setup.py install --prefix my_directory
+</pre></div>
 </div>
 </div></blockquote>
 </li>
 </ol>
 <p>Start the GUI with the command <em>soma_workflow_gui</em> and/or import the soma_workflow.client module to use the Python API.</p>
-<div class="admonition-see-also admonition seealso">
+<div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <p class="last"><a class="reference internal" href="gui.html#gui"><em>Graphical User Interface</em></a> for the GUI documentation, <a class="reference internal" href="client_API.html#client-api"><em>Python API</em></a> for Soma-workflow Python API documentation and <a class="reference internal" href="examples.html#examples"><em>Examples</em></a>.</p>
 </div>
@@ -115,7 +115,7 @@ optional. The values of these configuration items are set up at each
 Soma-workflow server installation (see <a class="reference internal" href="#server-configuration"><em>Server configuration (Created automatically)</em></a>). Ask these item
 values to the Soma-workflow administrator if you did not install the server yourself.</p>
 <p>Configuration file example (2 computing resources are configured):</p>
-<div class="highlight-python"><pre>[Titan]
+<div class="highlight-python"><div class="highlight"><pre>[Titan]
 
 CLUSTER_ADDRESS     = titan.mylab.fr
 SUBMITTING_MACHINES = titan0
@@ -127,7 +127,8 @@ LOGIN = my_login_on_titan
 [LabDesktops]
 
 CLUSTER_ADDRESS     = mydesktop.mylab.fr
-SUBMITTING_MACHINES = mydesktop</pre>
+SUBMITTING_MACHINES = mydesktop
+</pre></div>
 </div>
 <p><em>Configuration items required on the client side</em></p>
 <blockquote>
@@ -226,7 +227,7 @@ the first button, called &#8220;Install on Server and Client&#8221;, is used for
 <p>The configuration file syntax is the <a class="reference external" href="http://docs.python.org/library/configparser.html">ConfigParser</a>  syntax. All the configuration items are defined in one section. The name of
 the section is the resource identifier (ex: &#8220;Titan&#8221;).</p>
 <p>Configuration file example:</p>
-<div class="highlight-python"><pre>[Titan]
+<div class="highlight-python"><div class="highlight"><pre>[Titan]
 
 DATABASE_FILE        = path/soma_workflow.db
 TRANSFERED_FILES_DIR = path/transfered_files
@@ -235,6 +236,7 @@ SERVER_NAME          = soma_workflow_server_for_titan
 
 # optional limitation of the jobs in various queues
 MAX_JOB_IN_QUEUE = {10} test{50} long{3}
+MAX_JOB_RUNNING  = {100} test{500} long{30}
 
 # optional logging
 SERVER_LOG_FILE   = path/logs/log_server
@@ -246,15 +248,13 @@ ENGINE_LOG_LEVEL  = ERROR
 
 # remote access information
 CLUSTER_ADDRESS     = titan.mylab.fr
-SUBMITTING_MACHINES = titan0</pre>
+SUBMITTING_MACHINES = titan0
+</pre></div>
 </div>
 <div class="section" id="configuration-items-required-on-the-server-side">
 <h4>Configuration items required on the server side:<a class="headerlink" href="#configuration-items-required-on-the-server-side" title="Permalink to this headline">¶</a></h4>
 <blockquote>
 <div><dl class="docutils">
-<dt><strong>DATABASE_FILE</strong></dt>
-<dd>Path of the SQLite database file. The file will be created the first time
-the database server will be started.</dd>
 <dt><strong>TRANSFERED_FILES_DIR</strong></dt>
 <dd><p class="first">Path of the directory where the transfered files will be copied. The
 directory must be empty and will be managed entirely by Soma-workflow.</p>
@@ -275,10 +275,26 @@ entire directory and might delete any external file.</p>
 <span id="conf-server-option"></span><h4>Configuration items optional on the server side:<a class="headerlink" href="#configuration-items-optional-on-the-server-side" title="Permalink to this headline">¶</a></h4>
 <blockquote>
 <div><dl class="docutils">
+<dt><strong>DATABASE_FILE</strong></dt>
+<dd><p class="first">Path of the SQLite database file. The file will be created the first time
+the database server will be started.</p>
+<p class="last">This option was mandatory up to soma-workflow-2.6, and is optional since
+2.7. Additionally in 2.7, the database version number will be appended to
+the database file name, to avoid mixing several incompatible databases when
+switching between different soma-workflow versions.</p>
+</dd>
 <dt><strong>MAX_JOB_IN_QUEUE</strong></dt>
 <dd>Maximum number of job in each queue. If a queue does not appear here,
 Soma-workflow considers that there is no limitation.
 The syntax is &#8220;{default_queue_max_nb_jobs} queue_name1{max_nb_jobs_1} queue_name_2{max_nb_job_2}&#8221;. Example: &#8220;{5} test{20}&#8221;</dd>
+<dt><strong>MAX_JOB_RUNNING</strong> (new in 2.8)</dt>
+<dd><p class="first">Like MAX_JOB_IN_QUEUE, but also limits the number of jobs which may be
+running through a given queue. It thus includes actually running jobs, plus
+queued jobs (which may get to running status at any time).</p>
+<p class="last">Note that cluster queues may impose their own running jobs limits, which
+are not controlled by this parameter, thus the minimum limit will actually
+be effective.</p>
+</dd>
 <dt><strong>PATH_TRANSLATION_FILES</strong></dt>
 <dd>Specify here the shared resource path translation files, mandatory to use
 the SharedResourcePath objects (see <a class="reference internal" href="concepts.html#shared-resource-path-concept"><em>Shared Resource Path</em></a>).
@@ -306,6 +322,15 @@ unless a different value is specified in the Job attribute native_specification.
 <li>using a PBS cluster: NATIVE_SPECIFICATION= -l walltime=10:00:00,pmem=16gb</li>
 <li>using a SGE cluster: NATIVE_SPECIFICATION= -l h_rt=10:00:00</li>
 </ul>
+</dd>
+</dl>
+</dd>
+<dt><strong>SCHEDULER_TYPE</strong></dt>
+<dd><dl class="first last docutils">
+<dt>Scheduler type:</dt>
+<dd><p class="first"><strong>local_basic</strong>: simple builtin scheduler (the one used for the local single process mode). It may be used also on a remote machine (without DRMS support).</p>
+<p><strong>drmaa</strong>: cluster or grid scheduler, based on DRMAA. This is the scheduler used normally on servers, and is the default in such a case.</p>
+<p class="last"><strong>mpi</strong>: mono-process scheduler using MPI for the <em class="xref std std-ref">Mono process application on clusters</em> (light) mode.</p>
 </dd>
 </dl>
 </dd>
@@ -368,7 +393,7 @@ installation section (see <a class="reference internal" href="#server-requiremen
 <li>Create a configuration file (see <a class="reference internal" href="#light-mode-configuration"><em>Configuration</em></a>) at the location $HOME/.soma-workflow.cfg. You can also choose your own path for the configuration file and set the &#8220;SOMA_WORKFLOW_CONFIG&#8221; environment variable with this path or put it in the /etc/ directory.</li>
 </ol>
 <p>Start the GUI with the command <em>soma_workflow_gui</em> and/or import the soma.workflow.client module to use the Python API.</p>
-<div class="admonition-see-also admonition seealso">
+<div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <p class="last"><a class="reference internal" href="gui.html#gui"><em>Graphical User Interface</em></a> for the GUI documentation, <a class="reference internal" href="client_API.html#client-api"><em>Python API</em></a> for Soma-workflow Python API documentation and <a class="reference internal" href="examples.html#examples"><em>Examples</em></a>.</p>
 </div>
@@ -381,12 +406,13 @@ mode.</p>
 configuration items are defined in one section. The section name corresponds to
 the name you chose for the resource: &#8220;Local Titan&#8221; in the example.</p>
 <p>Configuration file example:</p>
-<div class="highlight-python"><pre>[Local Titan]
+<div class="highlight-python"><div class="highlight"><pre>[Local Titan]
 
 LIGHT_MODE    = True
 
 TRANSFERED_FILE_DIR = path/soma_workflow.db
-DATABASE_FILE       = path/transfered_files</pre>
+DATABASE_FILE       = path/transfered_files
+</pre></div>
 </div>
 <p><em>Required configuration items:</em></p>
 <blockquote>
@@ -394,9 +420,6 @@ DATABASE_FILE       = path/transfered_files</pre>
 <dt><strong>LIGHT_MODE</strong></dt>
 <dd>This item can be set up with any value, however it must be defined to use
 soma_workflow in the light mode.</dd>
-<dt><strong>DATABASE_FILE</strong></dt>
-<dd>Path of the SQLite database file. The file will be created the first time
-the application is launch.</dd>
 <dt><strong>TRANSFERED_FILE_DIR</strong></dt>
 <dd><p class="first">Path of the directory where the transfered files will be copied. The
 directory must be empty and will be managed entirely by Soma-workflow.
@@ -412,8 +435,76 @@ entire directory and might delete any external file.</p>
 </div></blockquote>
 <p><em>Optional configuration items:</em></p>
 <blockquote>
-<div>Many optional configuration item can be added to customize the installation, see
-<a class="reference internal" href="#server-configuration"><em>Server configuration (Created automatically)</em></a> for a full list of the items and their description.</div></blockquote>
+<div><p>Many optional configuration item can be added to customize the installation, see
+<a class="reference internal" href="#server-configuration"><em>Server configuration (Created automatically)</em></a> for a full list of the items and their description.</p>
+<p>In addition, a few more optional configuration items are available:</p>
+<dl class="docutils">
+<dt><strong>DATABASE_FILE</strong></dt>
+<dd><p class="first">Path of the SQLite database file. The file will be created the first time
+the application is launch.</p>
+<p class="last">This option was mandatory up to soma-workflow-2.6, and is optional since
+2.7. Additionally in 2.7, the database version number will be appended to
+the database file name, to avoid mixing several incompatible databases when
+switching between different soma-workflow versions.</p>
+</dd>
+<dt><strong>SOMA_WORKFLOW_DIR</strong> (new in 2.7)</dt>
+<dd>Directory which will contain soma_workflow files (typically, the SQlite
+database, and file transfers).</dd>
+</dl>
+<p>In addition <a class="reference internal" href="#local-sched-config"><em>Local scheduler options</em></a> can be used in the configuration: <strong>CPU_NB</strong>, <strong>MAX_CPU_NB</strong>, and <strong>SCHEDULER_INTERVAL</strong>.</p>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="server-configuration-examples">
+<h2><a class="toc-backref" href="#id20">Server configuration examples</a><a class="headerlink" href="#server-configuration-examples" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="local-mode-on-a-server-with-client-server-access">
+<h3>Local mode on a server, with client/server access<a class="headerlink" href="#local-mode-on-a-server-with-client-server-access" title="Permalink to this headline">¶</a></h3>
+<p>This mode allows remote access from a client to a computing server which does not have any DRMS and is using Soma-Workflow&#8217;s local (simple) scheduler.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">It is better not to use the local scheduler on machines shared between several users, as this basic scheduler does not handle inter-user load very well.</p>
+</div>
+<p>Server configuratinon (<tt class="docutils literal"><span class="pre">$HOME/.soma-workflow.cfg</span></tt>):</p>
+<div class="highlight-python"><div class="highlight"><pre>[averell]
+
+CLUSTER_ADDRESS     = averell.mylab.fr
+SUBMITTING_MACHINES = averell.mylab.fr
+LOGIN = my_login
+SCHEDULER_TYPE = local_basic
+NAME_SERVER_HOST = averell.mylab.fr
+SERVER_NAME = averell
+ENGINE_LOG_DIR = /home/my_login/.soma_workflow/averell/logs
+TRANSFERED_FILE_DIR = /home/my_login/.soma_workflow/averell/file_transfers
+DATABASE_FILE = /home/my_login/.soma_workflow/averell/soma_workflow.db
+</pre></div>
+</div>
+<p id="local-sched-config">The local scheduler also uses its own config file (<tt class="docutils literal"><span class="pre">$HOME/.soma-workflow-scheduler.cfg</span></tt>):</p>
+<p>The scheduler options are:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt><strong>CPU_NB</strong></dt>
+<dd>Number of CPU cores to be used.
+May be 0.
+From Soma-workflow 2.8, this number is not a maximum any longer, but rather a minimum. See MAX_CPU_NB.</dd>
+<dt><strong>MAX_CPU_NB</strong> (new in 2.8)</dt>
+<dd><p class="first">Maximum number of CPU cores to be used.
+0 means all processors detected on the machine.
+The number of processors used (provided there are enough jobs to feed them) is at least CPU_NB, and at most MAX_CPU_NB, depending on the machine load at the time of job submission.
+This load adjustment allows to use soma-workflow on a shared machine using the local scheduler. However this load adjustment is not an advanced load balancing feature, it is a cheap solution to avoid heavy overloading, but it is very limited and approximative.</p>
+<p class="last">When not specified (or zero), the number of available cores will be used as max, and 0 as cpu_nb.</p>
+</dd>
+<dt><strong>SCHEDULER_INTERVAL</strong></dt>
+<dd>Polling interval for the scheduler, in seconds. The default is 1 second.</dd>
+</dl>
+</div></blockquote>
+<p>Ex:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="n">averell</span><span class="p">]</span>
+
+<span class="n">CPU_NB</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">MAX_CPU_NB</span> <span class="o">=</span> <span class="mi">16</span>
+<span class="n">SCHEDULER_INTERVAL</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -454,6 +545,10 @@ entire directory and might delete any external file.</p>
 <li><a class="reference internal" href="#configuration">Configuration</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#server-configuration-examples">Server configuration examples</a><ul>
+<li><a class="reference internal" href="#local-mode-on-a-server-with-client-server-access">Local mode on a server, with client/server access</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -492,12 +587,12 @@ entire directory and might delete any external file.</p>
         <li class="right" >
           <a href="client_API.html" title="Python API"
              >previous</a> |</li>
-        <li><a href="index.html">soma-workflow version 2.6 documentation</a> &raquo;</li> 
+        <li><a href="index.html">soma-workflow version 2.8 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2011 CEA, Neurospin, France, CATI, France.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

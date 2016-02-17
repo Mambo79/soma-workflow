@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -8,15 +6,15 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Workflow creation API &mdash; soma-workflow version 2.6 documentation</title>
+    <title>Workflow creation API &mdash; soma-workflow version 2.8 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
-        VERSION:     '2.6.0',
+        URL_ROOT:    './',
+        VERSION:     '2.8.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,8 +23,8 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="shortcut icon" href="_static/icon_small.png"/>
-    <link rel="top" title="soma-workflow version 2.6 documentation" href="index.html" />
+    <link rel="shortcut icon" href="_static/icon_small.ico"/>
+    <link rel="top" title="soma-workflow version 2.8 documentation" href="index.html" />
     <link rel="next" title="Python API" href="client_API.html" />
     <link rel="prev" title="Status list" href="status_list.html" /> 
   </head>
@@ -43,7 +41,7 @@
         <li class="right" >
           <a href="status_list.html" title="Status list"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">soma-workflow version 2.6 documentation</a> &raquo;</li> 
+        <li><a href="index.html">soma-workflow version 2.8 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -57,7 +55,7 @@
 <p>The workflows are created using the soma_workflow.client API. This page presents
 the documentation of the Workflow, Job, FileTransfer and SharedResourcePath
 classes.</p>
-<div class="admonition-see-also admonition seealso">
+<div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <p class="last"><a class="reference internal" href="examples.html#examples"><em>Examples</em></a> for a quick start.</p>
 </div>
@@ -65,17 +63,21 @@ classes.</p>
 <h2>Workflow<a class="headerlink" href="#workflow" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="client.Workflow">
-<em class="property">class </em><tt class="descclassname">client.</tt><tt class="descname">Workflow</tt><big>(</big><em>object</em><big>)</big><a class="headerlink" href="#client.Workflow" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">client.</tt><tt class="descname">Workflow</tt><big>(</big><em>jobs</em>, <em>dependencies=None</em>, <em>root_group=None</em>, <em>disposal_timeout=168</em>, <em>user_storage=None</em>, <em>name=None</em><big>)</big><a class="headerlink" href="#client.Workflow" title="Permalink to this definition">¶</a></dt>
 <dd><p>Workflow representation.</p>
 <p><strong>name</strong>: <em>string</em></p>
 <dl class="docutils">
 <dt><strong>jobs</strong>: <em>sequence of Job</em></dt>
 <dd>Workflow jobs.</dd>
-<dt><strong>dependencies</strong>: <em>sequence of tuple (Job, Job)</em></dt>
-<dd>Dependencies between the jobs of the workflow.
+<dt><strong>dependencies</strong>: <em>sequence of tuple (element, element), element being Job or Group</em></dt>
+<dd><p class="first">Dependencies between the jobs of the workflow.
 If a job_a needs to be executed before a job_b can run: the tuple
 (job_a, job_b) must be added to the workflow dependencies. job_a and job_b
-must belong to workflow.jobs.</dd>
+must belong to workflow.jobs.</p>
+<p class="last">In Soma-Workflow 2.7 or higher, dependencies may use groups. In this case,
+dependencies are replaced internally to setup the groups jobs dependencies.
+2 additional barrier jobs (see BarrierJob) are used for each group.</p>
+</dd>
 <dt><strong>root_group</strong>: <em>sequence of Job and/or Group</em></dt>
 <dd>Recursive description of the workflow hierarchical structure. For displaying
 purpose only.</dd>
@@ -94,6 +96,36 @@ displayed at the root level in the GUI tree view.</p>
 <dd>Name of the workflow which will be displayed in the GUI.
 Default: workflow_id once submitted</dd>
 </dl>
+<dl class="method">
+<dt id="client.Workflow.add_dependencies">
+<tt class="descname">add_dependencies</tt><big>(</big><em>dependencies</em><big>)</big><a class="headerlink" href="#client.Workflow.add_dependencies" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add additional dependencies in the workflow.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="client.Workflow.add_workflow">
+<tt class="descname">add_workflow</tt><big>(</big><em>workflow</em>, <em>as_group=None</em><big>)</big><a class="headerlink" href="#client.Workflow.add_workflow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Concatenates a workflow into the current one.</p>
+<dl class="docutils">
+<dt>workflow: Workflow</dt>
+<dd>workflow to be added to self</dd>
+<dt>as_group: string (optional)</dt>
+<dd>if specified, the workflow will be added as a group with the given
+name</dd>
+</dl>
+<dl class="docutils">
+<dt>group or None</dt>
+<dd>if as_group is specified, the group created for the sub-workflow
+will be returned, otherwise the function returns None.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="client.Workflow.to_dict">
+<tt class="descname">to_dict</tt><big>(</big><big>)</big><a class="headerlink" href="#client.Workflow.to_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>The keys must be string to serialize with JSON.</p>
+</dd></dl>
+
 </dd></dl>
 
 </div>
@@ -101,7 +133,7 @@ Default: workflow_id once submitted</dd>
 <h2>Group<a class="headerlink" href="#group" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="client.Group">
-<em class="property">class </em><tt class="descclassname">client.</tt><tt class="descname">Group</tt><big>(</big><em>object</em><big>)</big><a class="headerlink" href="#client.Group" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">client.</tt><tt class="descname">Group</tt><big>(</big><em>elements</em>, <em>name</em>, <em>user_storage=None</em><big>)</big><a class="headerlink" href="#client.Group" title="Permalink to this definition">¶</a></dt>
 <dd><p>Hierarchical structure of a workflow.</p>
 <dl class="docutils">
 <dt><strong>elements</strong>: <em>sequence of Job and/or Group</em></dt>
@@ -118,19 +150,19 @@ Default: workflow_id once submitted</dd>
 <h2>Job<a class="headerlink" href="#job" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="client.Job">
-<em class="property">class </em><tt class="descclassname">client.</tt><tt class="descname">Job</tt><big>(</big><em>object</em><big>)</big><a class="headerlink" href="#client.Job" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">client.</tt><tt class="descname">Job</tt><big>(</big><em>command</em>, <em>referenced_input_files=None</em>, <em>referenced_output_files=None</em>, <em>stdin=None</em>, <em>join_stderrout=False</em>, <em>disposal_timeout=168</em>, <em>name=None</em>, <em>stdout_file=None</em>, <em>stderr_file=None</em>, <em>working_directory=None</em>, <em>parallel_job_info=None</em>, <em>priority=0</em>, <em>native_specification=None</em>, <em>user_storage=None</em><big>)</big><a class="headerlink" href="#client.Job" title="Permalink to this definition">¶</a></dt>
 <dd><p>Job representation.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">The command is the only argument required to create a Job.
 It is also useful to fill the job name for the workflow display in the GUI.</p>
 </div>
-<p><strong>command</strong>: <em>sequence of string or/and FileTransfer or/and SharedResourcePath or/and tuple (FileTransfer, relative_path) or/and sequence of FileTransfer or/and sequence of SharedResourcePath or/and sequence of tuple (FileTransfer, relative_path)</em></p>
+<p><strong>command</strong>: <em>sequence of string or/and FileTransfer or/and SharedResourcePath or/and TemporaryPath or/and tuple (FileTransfer, relative_path) or/and sequence of FileTransfer or/and sequence of SharedResourcePath or/and sequence of tuple (FileTransfer, relative_path)</em></p>
 <blockquote>
 <div><p>The command to execute. It can not be empty. In case of a shared file system
 the command is a sequence of string.</p>
-<p>In the other cases, the FileTransfer and SharedResourcePath objects will be
-replaced by the appropriate path before the job execution.</p>
+<p>In the other cases, the FileTransfer, SharedResourcePath, and TemporaryPath
+objects will be replaced by the appropriate path before the job execution.</p>
 <p>The tuples (FileTransfer, relative_path) can be used to refer to a file in a
 transfered directory.</p>
 <p>The sequences of FileTransfer, SharedResourcePath or tuple (FileTransfer,
@@ -149,14 +181,14 @@ stdin if you use one.</dd>
 <dt><strong>referenced_output_files</strong>: <em>sequence of FileTransfer</em></dt>
 <dd>List of the FileTransfer which are output of the Job. In other words, the
 FileTransfer which will be created or modified by the Job.</dd>
-<dt><strong>stdin</strong>: <em>string or FileTransfer or SharedRessourcePath</em></dt>
+<dt><strong>stdin</strong>: <em>string or FileTransfer or SharedResourcePath</em></dt>
 <dd>Path to the file which will be read as input stream by the Job.</dd>
 <dt><strong>join_stderrout</strong>: <em>boolean</em></dt>
 <dd>Specifies whether the error stream should be mixed with the output stream.</dd>
-<dt><strong>stdout_file</strong>: <em>string or FileTransfer or SharedRessourcePath</em></dt>
+<dt><strong>stdout_file</strong>: <em>string or FileTransfer or SharedResourcePath</em></dt>
 <dd>Path of the file where the standard output stream of the job will be
 redirected.</dd>
-<dt><strong>stderr_file</strong>: <em>string or FileTransfer or SharedRessourcePath</em></dt>
+<dt><strong>stderr_file</strong>: <em>string or FileTransfer or SharedResourcePath</em></dt>
 <dd>Path of the file where the standard error stream of the job will be
 redirected.</dd>
 </dl>
@@ -167,17 +199,17 @@ output to a specific file. Indeed, even if they are not set the standard
 outputs will always be available through the WorklfowController API.</p>
 </div>
 <dl class="docutils">
-<dt><strong>working_directory</strong>: <em>string or FileTransfer or SharedRessourcePath</em></dt>
+<dt><strong>working_directory</strong>: <em>string or FileTransfer or SharedResourcePath</em></dt>
 <dd>Path of the directory where the job will be executed. The working directory
 is useful if your Job uses relative file path for example.</dd>
 <dt><strong>priority</strong>: <em>int</em></dt>
-<dd>Job priority: 0 = low priority. If several Jobs are ready to run at the 
+<dd>Job priority: 0 = low priority. If several Jobs are ready to run at the
 same time the jobs with higher priority will be submitted first.</dd>
 <dt><strong>native_specification</strong>: <em>string</em></dt>
-<dd><p class="first">Some specific option/function of the computing resource you want to use 
+<dd><p class="first">Some specific option/function of the computing resource you want to use
 might not be available among the list of Soma-workflow Job attributes.
-Use the native specification attribute to use these specific functionalities. 
-If a native_specification is defined here, the configured native 
+Use the native specification attribute to use these specific functionalities.
+If a native_specification is defined here, the configured native
 specification will be ignored (documentation configuration item: NATIVE_SPECIFICATION).</p>
 <dl class="last docutils">
 <dt><em>Example:</em> Specification of a job walltime and more:</dt>
@@ -202,6 +234,102 @@ The configuration name is the type of parallel Job. Example: MPI or OpenMP.</p>
 <dt><strong>user_storage</strong>: <em>picklable object</em></dt>
 <dd>For the user needs, any small and picklable object can be stored here.</dd>
 </dl>
+<dl class="classmethod">
+<dt id="client.Job.from_dict">
+<em class="property">classmethod </em><tt class="descname">from_dict</tt><big>(</big><em>d</em>, <em>tr_from_ids</em>, <em>srp_from_ids</em>, <em>tmp_from_ids</em><big>)</big><a class="headerlink" href="#client.Job.from_dict" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>d <em>dictionary</em></li>
+<li>tr_from_id <em>id -&gt; FileTransfer</em></li>
+<li>srp_from_id <em>id -&gt; SharedResourcePath</em></li>
+<li>tmp_from_ids <em>id -&gt; TemporaryPath</em></li>
+</ul>
+</dd></dl>
+
+<dl class="method">
+<dt id="client.Job.to_dict">
+<tt class="descname">to_dict</tt><big>(</big><em>id_generator</em>, <em>transfer_ids</em>, <em>shared_res_path_id</em>, <em>tmp_ids</em><big>)</big><a class="headerlink" href="#client.Job.to_dict" title="Permalink to this definition">¶</a></dt>
+<dd><ul>
+<li><p class="first">id_generator <em>IdGenerator</em></p>
+</li>
+<li><dl class="first docutils">
+<dt>transfer_ids <em>dict: client.FileTransfer -&gt; int</em></dt>
+<dd><p class="first last">This dictonary will be modified.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>shared_res_path_id <em>dict: client.SharedResourcePath -&gt; int</em></dt>
+<dd><p class="first last">This dictonary will be modified.</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">tmp_ids <em>dict: client.TemporaryPath -&gt; int</em></p>
+</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="client.BarrierJob">
+<em class="property">class </em><tt class="descclassname">client.</tt><tt class="descname">BarrierJob</tt><big>(</big><em>referenced_input_files=None</em>, <em>referenced_output_files=None</em>, <em>name=None</em><big>)</big><a class="headerlink" href="#client.BarrierJob" title="Permalink to this definition">¶</a></dt>
+<dd><p>Barrier job: it is a &#8220;fake&#8221; job which does nothing (and will not become a
+real job on the DRMS) but has dependencies.
+It may be used to make a dependencies hub, to avoid too many dependencies
+with fully connected jobs sets.</p>
+<dl class="docutils">
+<dt>Ex:</dt>
+<dd><p class="first">(Job1, Job2, Job3) should be all connected to (Job4, Job5, Job6)
+needs 3*3 = 9 (N^2) dependencies.
+With a barrier:</p>
+<div class="highlight-python"><div class="highlight"><pre>Job1              Job4
+      \        /
+Job2 -- Barrier -- Job5
+      /        \
+Job3             Job6
+</pre></div>
+</div>
+<p>needs 6 (2*N).</p>
+<p>BarrierJob constructor accepts only a subset of Job constructor parameter:</p>
+<p><strong>referenced_input_files</strong></p>
+<p><strong>referenced_output_files</strong></p>
+<p class="last"><strong>name</strong></p>
+</dd>
+</dl>
+<dl class="classmethod">
+<dt id="client.BarrierJob.from_dict">
+<em class="property">classmethod </em><tt class="descname">from_dict</tt><big>(</big><em>d</em>, <em>tr_from_ids</em>, <em>srp_from_ids</em>, <em>tmp_from_ids</em><big>)</big><a class="headerlink" href="#client.BarrierJob.from_dict" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>d <em>dictionary</em></li>
+<li>tr_from_id <em>id -&gt; FileTransfer</em></li>
+<li>srp_from_id <em>id -&gt; SharedResourcePath</em></li>
+<li>tmp_from_ids <em>id -&gt; TemporaryPath</em></li>
+</ul>
+</dd></dl>
+
+<dl class="method">
+<dt id="client.BarrierJob.to_dict">
+<tt class="descname">to_dict</tt><big>(</big><em>id_generator</em>, <em>transfer_ids</em>, <em>shared_res_path_id</em>, <em>tmp_ids</em><big>)</big><a class="headerlink" href="#client.BarrierJob.to_dict" title="Permalink to this definition">¶</a></dt>
+<dd><ul>
+<li><p class="first">id_generator <em>IdGenerator</em></p>
+</li>
+<li><dl class="first docutils">
+<dt>transfer_ids <em>dict: client.FileTransfer -&gt; int</em></dt>
+<dd><p class="first last">This dictonary will be modified.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>shared_res_path_id <em>dict: client.SharedResourcePath -&gt; int</em></dt>
+<dd><p class="first last">This dictonary will be modified.</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">tmp_ids <em>dict: client.TemporaryPath -&gt; int</em></p>
+</li>
+</ul>
+</dd></dl>
+
 </dd></dl>
 
 </div>
@@ -209,7 +337,7 @@ The configuration name is the type of parallel Job. Example: MPI or OpenMP.</p>
 <h2>FileTransfer<a class="headerlink" href="#filetransfer" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="client.FileTransfer">
-<em class="property">class </em><tt class="descclassname">client.</tt><tt class="descname">FileTransfer</tt><big>(</big><em>object</em><big>)</big><a class="headerlink" href="#client.FileTransfer" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">client.</tt><tt class="descname">FileTransfer</tt><big>(</big><em>is_input</em>, <em>client_path=None</em>, <em>disposal_timeout=168</em>, <em>name=None</em>, <em>client_paths=None</em><big>)</big><a class="headerlink" href="#client.FileTransfer" title="Permalink to this definition">¶</a></dt>
 <dd><p>File/directory transfer representation</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -235,12 +363,15 @@ directories (see the note below).</dd>
 <dd>Name of the FileTransfer which will be displayed in the GUI.
 Default: client_path + &#8220;transfer&#8221;</dd>
 </dl>
+<p>When a file is transfered via a FileTransfer, the Job it is used in has to be
+built using the FileTransfer object in place of the file name in the command
+list. The FileTransfer object has also to be on the referenced_input_files
+or referenced_output_files lists in Job constructor.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p>Use client_paths if the transfer involves several associated files and/or
 directories. Examples:</p>
-<blockquote class="last">
-<div><blockquote>
+<blockquote>
 <div><ul class="simple">
 <li>file series</li>
 <li>file format associating several file and/or directories
@@ -249,8 +380,33 @@ In this case, set client_path to one the files (ex: .img) and
 client_paths contains all the files (ex: .img and .hdr files)</li>
 </ul>
 </div></blockquote>
-<p>In other cases (1 file or 1 directory) the client_paths must be set to None.</p>
-</div></blockquote>
+<p>In other cases (1 file or 1 directory) the client_paths must be set to
+None.</p>
+<p>When client_paths is not None, the server-side handling of paths is
+different: the server directory is used istead of files. This has slight
+consequences on the behaviour of the workflow:</p>
+<ul class="last">
+<li><p class="first">in soma-workflow 2.6 and earlier, the commandline will be using the
+directory instead of a file name, which is often not what you expect.</p>
+</li>
+<li><p class="first">in soma-workflow 2.7 and later, the commandline will be using the
+main file name (client_path) translated to the server location. This is
+more probably what is expected.</p>
+</li>
+<li><p class="first">in any case it is possible to specify the commandline path using a
+tuple as commandline argument:</p>
+<div class="highlight-python"><div class="highlight"><pre>myfile = FileTransfer(is_input=True, client_path=&#39;/home/bubu/plof.nii&#39;,
+    client_paths=[&#39;/home/bubu/plof.nii&#39;, &#39;/home/bubu/plof.nii.minf&#39;])
+# job1 will work with SWF &gt;= 2.7, not in 2.6
+job1 = Job(command=[&#39;AimsFileInfo&#39;, myfile],
+    referenced_input_files=[myfile])
+# job2 will use &lt;engine_path&gt;/plof.nii as input
+job2 = Job(command=[&#39;AimsFileInfo&#39;, (myfile, &#39;plof.nii&#39;)],
+    referenced_input_files=[myfile]))
+</pre></div>
+</div>
+</li>
+</ul>
 </div>
 </dd></dl>
 
@@ -259,7 +415,7 @@ client_paths contains all the files (ex: .img and .hdr files)</li>
 <span id="shared-resource-path-api"></span><h2>SharedResourcePath<a class="headerlink" href="#sharedresourcepath" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="client.SharedResourcePath">
-<em class="property">class </em><tt class="descclassname">client.</tt><tt class="descname">SharedResourcePath</tt><big>(</big><em>object</em><big>)</big><a class="headerlink" href="#client.SharedResourcePath" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">client.</tt><tt class="descname">SharedResourcePath</tt><big>(</big><em>relative_path</em>, <em>namespace=None</em>, <em>uuid=None</em>, <em>disposal_timeout=168</em><big>)</big><a class="headerlink" href="#client.SharedResourcePath" title="Permalink to this definition">¶</a></dt>
 <dd><p>Representation of path which is valid on either user&#8217;s or computing resource
 file system.</p>
 <div class="admonition note">
@@ -347,12 +503,12 @@ the computing resource side.</p>
         <li class="right" >
           <a href="status_list.html" title="Status list"
              >previous</a> |</li>
-        <li><a href="index.html">soma-workflow version 2.6 documentation</a> &raquo;</li> 
+        <li><a href="index.html">soma-workflow version 2.8 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2011 CEA, Neurospin, France, CATI, France.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

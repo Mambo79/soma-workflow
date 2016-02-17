@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -8,15 +6,15 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Python API &mdash; soma-workflow version 2.6 documentation</title>
+    <title>Python API &mdash; soma-workflow version 2.8 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
-        VERSION:     '2.6.0',
+        URL_ROOT:    './',
+        VERSION:     '2.8.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,8 +23,8 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="shortcut icon" href="_static/icon_small.png"/>
-    <link rel="top" title="soma-workflow version 2.6 documentation" href="index.html" />
+    <link rel="shortcut icon" href="_static/icon_small.ico"/>
+    <link rel="top" title="soma-workflow version 2.8 documentation" href="index.html" />
     <link rel="next" title="Installation and configuration" href="install_config.html" />
     <link rel="prev" title="Workflow creation API" href="workflow_creation.html" /> 
   </head>
@@ -43,7 +41,7 @@
         <li class="right" >
           <a href="workflow_creation.html" title="Workflow creation API"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">soma-workflow version 2.6 documentation</a> &raquo;</li> 
+        <li><a href="index.html">soma-workflow version 2.8 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -93,43 +91,25 @@ objects.</p>
 <dd><p>Sets up the connection to the computing resource.
 Looks for a soma-workflow configuration file (if not specified in the
 <em>config</em> argument).</p>
-<ul>
-<li><dl class="first docutils">
-<dt>resource_id <em>string</em></dt>
-<dd><p class="first last">Identifier of the computing resource to connect to.
-If None, the number of cpu of the current machine is detected and the basic scheduler is lauched.</p>
-</dd>
+<dl class="docutils">
+<dt>resource_id: <em>string</em></dt>
+<dd>Identifier of the computing resource to connect to.
+If None, the number of cpu of the current machine is detected and
+the basic scheduler is lauched.</dd>
+<dt>login: <em>string</em></dt>
+<dd>Required if the computing resource is remote.</dd>
+<dt>password: <em>string</em></dt>
+<dd>Required if the computing resource is remote and not RSA key where
+configured to log on the remote machine with ssh.</dd>
+<dt>config: <em>configuration.Configuration</em></dt>
+<dd>Optional configuration.</dd>
+<dt>rsa_key_pass: <em>string</em></dt>
+<dd>Required if the RSA key is protected with a password.</dd>
 </dl>
-</li>
-<li><dl class="first docutils">
-<dt>login <em>string</em></dt>
-<dd><p class="first last">Required if the computing resource is remote.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>password <em>string</em></dt>
-<dd><p class="first last">Required if the computing resource is remote and not RSA key where
-configured to log on the remote machine with ssh.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>config <em>configuration.Configuration</em></dt>
-<dd><p class="first last">Optional configuration.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>rsa_key_pass <em>string</em></dt>
-<dd><p class="first last">Required if the RSA key is protected with a password.</p>
-</dd>
-</dl>
-</li>
-</ul>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The login and password are only required for a remote computing resource.</p>
+<p class="last">The login and password are only required for a remote computing
+resource.</p>
 </div>
 </dd></dl>
 
@@ -140,39 +120,20 @@ configured to log on the remote machine with ssh.</p>
 <dt id="client.WorkflowController.submit_workflow">
 <tt class="descclassname">WorkflowController.</tt><tt class="descname">submit_workflow</tt><big>(</big><em>workflow</em>, <em>expiration_date=None</em>, <em>name=None</em>, <em>queue=None</em><big>)</big><a class="reference internal" href="_modules/client.html#WorkflowController.submit_workflow"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.WorkflowController.submit_workflow" title="Permalink to this definition">¶</a></dt>
 <dd><p>Submits a workflow and returns a workflow identifier.</p>
-<ul>
-<li><dl class="first docutils">
-<dt>workflow <em>client.Workflow</em></dt>
-<dd><p class="first last">Workflow description.</p>
-</dd>
+<p>Parameters:</p>
+<dl class="docutils">
+<dt>workflow: <em>client.Workflow</em></dt>
+<dd>Workflow description.</dd>
+<dt>expiration_date: <em>datetime.datetime</em></dt>
+<dd>After this date the workflow will be deleted.</dd>
+<dt>name: <em>string</em></dt>
+<dd>Optional workflow name.</dd>
+<dt>queue: <em>string</em></dt>
+<dd>Optional name of the queue where to submit jobs. If it is not
+specified the jobs will be submitted to the default queue.</dd>
 </dl>
-</li>
-<li><dl class="first docutils">
-<dt>expiration_date <em>datetime.datetime</em></dt>
-<dd><p class="first last">After this date the workflow will be deleted.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>name <em>string</em></dt>
-<dd><p class="first last">Optional workflow name.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>queue <em>string</em></dt>
-<dd><p class="first last">Optional name of the queue where to submit jobs. If it is not specified
-the jobs will be submitted to the default queue.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>returns: <em>int</em></dt>
-<dd><p class="first last">Workflow identifier.</p>
-</dd>
-</dl>
-</li>
-</ul>
+<p>Returns:</p>
+<p>Workflow identifier: int</p>
 <p>Raises <em>WorkflowError</em> or <em>JobError</em> if the workflow is not correct.</p>
 </dd></dl>
 
@@ -182,24 +143,18 @@ the jobs will be submitted to the default queue.</p>
 <dd><p><strong>deprecated since version 2.4:</strong> Use submit_workflow instead.</p>
 <p>Submits a job which is not part of a workflow.
 Returns a job identifier.</p>
-<p>If the job used transfered files the list of involved file transfer <strong>must
-be</strong> specified setting the arguments: <em>referenced_input_files</em> and
-<em>referenced_output_files</em>.</p>
+<p>If the job used transfered files the list of involved file transfer
+<strong>must be</strong> specified setting the arguments: <em>referenced_input_files</em>
+and <em>referenced_output_files</em>.</p>
 <p>Each path must be reachable from the computing resource.</p>
-<ul>
-<li><p class="first">job <em>client.Job</em></p>
-</li>
-<li><dl class="first docutils">
-<dt>queue <em>string</em></dt>
-<dd><p class="first last">Name of the queue where to submit the jobs. If it is not
-specified the job will be submitted to the default queue.</p>
-</dd>
+<p>job: <em>client.Job</em></p>
+<dl class="docutils">
+<dt>queue: <em>string</em></dt>
+<dd>Name of the queue where to submit the jobs. If it is not
+specified the job will be submitted to the default queue.</dd>
 </dl>
-</li>
-<li><p class="first">returns: int
-Job identifier.</p>
-</li>
-</ul>
+<p>Returns:</p>
+<p>Job identifier: string</p>
 <p>Raises <em>JobError</em> if the job is not correct.</p>
 </dd></dl>
 
@@ -208,10 +163,8 @@ Job identifier.</p>
 <tt class="descclassname">WorkflowController.</tt><tt class="descname">register_transfer</tt><big>(</big><em>file_transfer</em><big>)</big><a class="reference internal" href="_modules/client.html#WorkflowController.register_transfer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.WorkflowController.register_transfer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Registers a file transfer which is not part of a workflow and returns a
 file transfer identifier.</p>
-<ul class="simple">
-<li>file_transfer <em>client.FileTransfer</em></li>
-<li>returns <em>EngineTransfer</em></li>
-</ul>
+<p>file_transfer: <em>client.FileTransfer</em></p>
+<p>returns: <em>EngineTransfer</em></p>
 </dd></dl>
 
 </div>
@@ -220,10 +173,9 @@ file transfer identifier.</p>
 <dl class="method">
 <dt id="client.WorkflowController.workflow">
 <tt class="descclassname">WorkflowController.</tt><tt class="descname">workflow</tt><big>(</big><em>workflow_id</em><big>)</big><a class="reference internal" href="_modules/client.html#WorkflowController.workflow"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.WorkflowController.workflow" title="Permalink to this definition">¶</a></dt>
-<dd><ul class="simple">
-<li>workflow_id <em>workflow_identifier</em></li>
-<li>returns: <em>Workflow</em></li>
-</ul>
+<dd><p>workflow_id: <em>workflow_identifier</em></p>
+<p>returns:</p>
+<p>Workflow</p>
 <p>Raises <em>UnknownObjectError</em> if the workflow_id is not valid</p>
 </dd></dl>
 
@@ -248,9 +200,9 @@ submitted by the user, or about the workflows specified in the
 <dl class="method">
 <dt id="client.WorkflowController.jobs">
 <tt class="descclassname">WorkflowController.</tt><tt class="descname">jobs</tt><big>(</big><em>job_ids=None</em><big>)</big><a class="reference internal" href="_modules/client.html#WorkflowController.jobs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.WorkflowController.jobs" title="Permalink to this definition">¶</a></dt>
-<dd><p>Lists the identifiers and general information about all the jobs submitted
-by the user and which are not part of a workflow, or about the jobs
-specified in the <em>job_ids</em> argument.</p>
+<dd><p>Lists the identifiers and general information about all the jobs
+submitted by the user and which are not part of a workflow, or about
+the jobs specified in the <em>job_ids</em> argument.</p>
 <ul>
 <li><p class="first">job_ids <em>sequence of job identifiers</em></p>
 </li>
@@ -266,9 +218,9 @@ specified in the <em>job_ids</em> argument.</p>
 <dl class="method">
 <dt id="client.WorkflowController.transfers">
 <tt class="descclassname">WorkflowController.</tt><tt class="descname">transfers</tt><big>(</big><em>transfer_ids=None</em><big>)</big><a class="reference internal" href="_modules/client.html#WorkflowController.transfers"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.WorkflowController.transfers" title="Permalink to this definition">¶</a></dt>
-<dd><p>Lists the identifiers and information about all the user&#8217;s file transfers
-which are not part of a workflow or about the file transfers specified in
-the <em>transfer_ids</em> argument.</p>
+<dd><p>Lists the identifiers and information about all the user&#8217;s file
+transfers which are not part of a workflow or about the file transfers
+specified in the <em>transfer_ids</em> argument.</p>
 <ul>
 <li><p class="first">transfer_ids <em>sequence of FileTransfer identifiers</em></p>
 </li>
@@ -282,7 +234,8 @@ the <em>transfer_ids</em> argument.</p>
 on the computing resource and all the transfer
 information will be deleted, unless an existing
 job has declared this file as output or input.</li>
-<li>client_paths: sequence of file or directory path or None)</li>
+<li>client_paths: sequence of file or directory path
+or None)</li>
 </ul>
 </dd>
 </dl>
@@ -317,14 +270,41 @@ constants.WORKFLOW_STATUS list.</p>
 <dl class="method">
 <dt id="client.WorkflowController.workflow_elements_status">
 <tt class="descclassname">WorkflowController.</tt><tt class="descname">workflow_elements_status</tt><big>(</big><em>workflow_id</em><big>)</big><a class="reference internal" href="_modules/client.html#WorkflowController.workflow_elements_status"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.WorkflowController.workflow_elements_status" title="Permalink to this definition">¶</a></dt>
-<dd><p>Gets back the status of all the workflow elements at once, minimizing the
-communication with the server and request to the database.
+<dd><p>Gets back the status of all the workflow elements at once, minimizing
+the communication with the server and request to the database.
 TO DO =&gt; make it more user friendly.</p>
-<ul class="simple">
-<li>workflow_id <em>workflow identifier</em></li>
-<li>returns: tuple (sequence of tuple (job_id, status, queue, exit_info, 
-(submission_date, execution_date, ending_date)), sequence of tuple
-(transfer_id, (status, progression_info)), workflow_status, workflow_queue)</li>
+<ul>
+<li><p class="first">workflow_id <em>workflow identifier</em></p>
+</li>
+<li><dl class="first docutils">
+<dt>returns: tuple:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>sequence of tuple</dt>
+<dd><dl class="first last docutils">
+<dt>(job_id, status, queue, exit_info,</dt>
+<dd><p class="first last">(submission_date, execution_date, ending_date)),</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>sequence of tuple</dt>
+<dd><p class="first last">(transfer_id, (status, progression_info)),</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">workflow_status,</p>
+</li>
+<li><p class="first">workflow_queue,</p>
+</li>
+<li><p class="first">sequence of tuple (temp_path_id, engine_path, status)</p>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
 </ul>
 <p>Raises <em>UnknownObjectError</em> if the workflow_id is not valid</p>
 </dd></dl>
@@ -364,11 +344,13 @@ constants.JOB_STATUS.</p>
 <li>exit value: operating system exit code of the job if the job
 terminated normally.</li>
 <li>terminating signal: representation of the signal that caused the
-termination of the job if the job terminated due to the receipt of
-a signal.</li>
-<li>resource usage: resource usage information provided as an array of
-strings where each string complies with the format &lt;name&gt;=&lt;value&gt;.
-The information provided depends on the DRMS and DRMAA implementation.</li>
+termination of the job if the job terminated due to the receipt
+of a signal.</li>
+<li>resource usage: resource usage information provided as an array
+of strings where each string complies with the format
+&lt;name&gt;=&lt;value&gt;.
+The information provided depends on the DRMS and DRMAA
+implementation.</li>
 </ul>
 </dd>
 </dl>
@@ -419,13 +401,16 @@ The information provided depends on the DRMS and DRMAA implementation.</li>
 <li><dl class="first docutils">
 <dt>returns: <em>tuple(transfer_status or None, tuple or None)</em></dt>
 <dd><ul class="first last simple">
-<li>Status of the file transfer : see <a class="reference internal" href="status_list.html#file-transfer-status"><em>File Transfer status</em></a> or the
-constants.FILE_TRANSFER_STATUS list.</li>
+<li>Status of the file transfer : see <a class="reference internal" href="status_list.html#file-transfer-status"><em>File Transfer status</em></a> or
+the constants.FILE_TRANSFER_STATUS list.</li>
 <li>None if the transfer status in not
 constants.TRANSFERING_FROM_CLIENT_TO_CR or
 constants.TRANSFERING_FROM_CR_TO_CLIENT.
-tuple (file size, size already transfered) if it is a file transfer.
-tuple (cumulated size, sequence of tuple (relative_path, file_size, size already transfered) if it is a directory transfer.</li>
+tuple (file size, size already transfered) if it is a file
+transfer.
+tuple (cumulated size, sequence of tuple (relative_path,
+file_size, size already transfered) if it is a directory
+transfer.</li>
 </ul>
 </dd>
 </dl>
@@ -453,7 +438,7 @@ It will be possible to restart the workflow afterwards.</p>
 </ul>
 <blockquote>
 <div>return True if the running jobs were killed and False
-if some jobs are possibly still running on the computing resource 
+if some jobs are possibly still running on the computing resource
 despite the workflow was stopped.</div></blockquote>
 </div></blockquote>
 </dd></dl>
@@ -461,16 +446,16 @@ despite the workflow was stopped.</div></blockquote>
 <dl class="method">
 <dt id="client.WorkflowController.restart_workflow">
 <tt class="descclassname">WorkflowController.</tt><tt class="descname">restart_workflow</tt><big>(</big><em>workflow_id</em>, <em>queue=None</em><big>)</big><a class="reference internal" href="_modules/client.html#WorkflowController.restart_workflow"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.WorkflowController.restart_workflow" title="Permalink to this definition">¶</a></dt>
-<dd><p>Restarts the jobs of the workflow which failed. The jobs will be submitted
-again.
+<dd><p>Restarts the jobs of the workflow which failed. The jobs will be
+submitted again.
 The workflow status has to be constants.WORKFLOW_DONE.</p>
 <ul>
 <li><p class="first">workflow_id <em>workflow identifier</em></p>
 </li>
 <li><dl class="first docutils">
 <dt>queue <em>string</em></dt>
-<dd><p class="first last">Optional name of the queue where to submit jobs. If it is not specified
-the jobs will be submitted to the default queue.</p>
+<dd><p class="first last">Optional name of the queue where to submit jobs. If it is not
+specified the jobs will be submitted to the default queue.</p>
 </dd>
 </dl>
 </li>
@@ -491,9 +476,10 @@ the jobs will be submitted to the default queue.</p>
 Jobs). The worklfow_id will become invalid and can not be used anymore.
 The workflow jobs which are running will be killed.
 If force is set to True: the call will block until the workflow is
-deleted. With force set to True, if the workflow can not be deleted properly
-it is deleted from Soma-workflow database. However, if some jobs are still
-running they are not be killed. In this case the return value is False.</p>
+deleted. With force set to True, if the workflow can not be deleted
+properly it is deleted from Soma-workflow database. However, if some
+jobs are still running they are not be killed. In this case the return
+value is False.</p>
 <ul class="simple">
 <li>workflow_id <em>workflow_identifier</em></li>
 <li>force <em>boolean</em></li>
@@ -550,8 +536,8 @@ A negative value means that the method will wait indefinetely.</p>
 <dt id="client.WorkflowController.kill_job">
 <tt class="descclassname">WorkflowController.</tt><tt class="descname">kill_job</tt><big>(</big><em>job_id</em><big>)</big><a class="reference internal" href="_modules/client.html#WorkflowController.kill_job"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.WorkflowController.kill_job" title="Permalink to this definition">¶</a></dt>
 <dd><p><strong>deprecated since version 2.4:</strong> Use stop_workflow instead.</p>
-<p>Kills a running job. The job will not be deleted from the system (the job
-identifier remains valid).
+<p>Kills a running job. The job will not be deleted from the system (the
+job identifier remains valid).
 Use the restart_job method to restart the job.</p>
 <p>Raises <em>UnknownObjectError</em> if the job_id is not valid</p>
 </dd></dl>
@@ -584,9 +570,9 @@ The job is killed if it is running.</p>
 <p>Raises <em>UnknownObjectError</em> if the job_id is not valid</p>
 <ul class="simple">
 <li>returns: <em>boolean</em>
-If force is True: return True if the running jobs were killed and False
-if some jobs are possibly still running on the computing resource despite
-the workflow doesn&#8217;t exist.</li>
+If force is True: return True if the running jobs were killed and
+False if some jobs are possibly still running on the computing
+resource despite the workflow doesn&#8217;t exist.</li>
 </ul>
 </dd></dl>
 
@@ -598,8 +584,8 @@ the workflow doesn&#8217;t exist.</li>
 <tt class="descclassname">WorkflowController.</tt><tt class="descname">transfer_files</tt><big>(</big><em>transfer_ids</em>, <em>buffer_size=262144</em><big>)</big><a class="reference internal" href="_modules/client.html#WorkflowController.transfer_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.WorkflowController.transfer_files" title="Permalink to this definition">¶</a></dt>
 <dd><p>Transfer file(s) associated to the transfer_id.
 If the files are only located on the client side (that is the transfer
-status is constants.FILES_ON_CLIENT) the file(s) will be transfered from the
-client to the computing resource.
+status is constants.FILES_ON_CLIENT) the file(s) will be transfered
+from the client to the computing resource.
 If the files are located on the computing resource side (that is the
 transfer status is constants.FILES_ON_CR or
 constants.FILES_ON_CLIENT_AND_CR)
@@ -609,8 +595,8 @@ the files will be transfered from the computing resource to the client.</p>
 </li>
 <li><dl class="first docutils">
 <dt>buffer_size <em>int</em></dt>
-<dd><p class="first last">Depending on the transfer method, the files can be transfered piece by
-piece. The size of each piece can be tuned using the buffer_size
+<dd><p class="first last">Depending on the transfer method, the files can be transfered piece
+by piece. The size of each piece can be tuned using the buffer_size
 argument.</p>
 </dd>
 </dl>
@@ -629,11 +615,11 @@ argument.</p>
 <dl class="method">
 <dt id="client.WorkflowController.delete_transfer">
 <tt class="descclassname">WorkflowController.</tt><tt class="descname">delete_transfer</tt><big>(</big><em>transfer_id</em><big>)</big><a class="reference internal" href="_modules/client.html#WorkflowController.delete_transfer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.WorkflowController.delete_transfer" title="Permalink to this definition">¶</a></dt>
-<dd><p>Deletes the FileTransfer and the associated files and directories on the
-computing resource side. The transfer_id will become invalid and can not be
-used anymore. If some jobs reference the FileTransfer as an input or an
-output the FileTransfer will not be deleted immediately but as soon as these
-jobs will be deleted.</p>
+<dd><p>Deletes the FileTransfer and the associated files and directories on
+the computing resource side. The transfer_id will become invalid and
+can not be used anymore. If some jobs reference the FileTransfer as an
+input or an output the FileTransfer will not be deleted immediately but
+as soon as these jobs will be deleted.</p>
 <p>Raises <em>UnknownObjectError</em> if the transfer_id is not valid</p>
 </dd></dl>
 
@@ -648,7 +634,8 @@ jobs will be deleted.</p>
 <ul class="simple">
 <li>workflow_id <em>workflow identifier</em></li>
 <li>include_aborted_jobs <em>boolean</em>
-Include the jobs which exit status is constants.EXIT_ABORTED</li>
+Include the jobs which exit status is constants.EXIT_ABORTED
+and constants.EXIT_NOTRUN</li>
 <li>include_user_killed_jobs <em>boolean</em>
 Include the jobs which exit status is constants.USER_KILLED</li>
 <li>returns: <em>list of job identifier</em>
@@ -662,9 +649,10 @@ or which exit value is not 0.</li>
 <em class="property">static </em><tt class="descclassname">Helper.</tt><tt class="descname">delete_all_workflows</tt><big>(</big><em>wf_ctrl</em>, <em>force=True</em><big>)</big><a class="reference internal" href="_modules/client.html#Helper.delete_all_workflows"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.Helper.delete_all_workflows" title="Permalink to this definition">¶</a></dt>
 <dd><p>Delete all the workflows.
 If force is set to True: the call will block until the workflows are
-deleted. With force set to True, if a workflow can not be deleted properly
-it is deleted from Soma-workflow database. However, if some jobs are still
-running they will not be killed. In this case the return value is False.</p>
+deleted. With force set to True, if a workflow can not be deleted
+properly it is deleted from Soma-workflow database. However, if some
+jobs are still running they will not be killed. In this case the return
+value is False.</p>
 <ul class="simple">
 <li>wf_ctrl <em>client.WorkflowController</em></li>
 <li>force <em>boolean</em></li>
@@ -693,8 +681,8 @@ running they will not be killed. In this case the return value is False.</p>
 </li>
 <li><dl class="first docutils">
 <dt>buffer_size <em>int</em></dt>
-<dd><p class="first last">Depending on the transfer method, the files can be transfered piece by
-piece. The size of each piece can be tuned using the buffer_size
+<dd><p class="first last">Depending on the transfer method, the files can be transfered piece
+by piece. The size of each piece can be tuned using the buffer_size
 argument.</p>
 </dd>
 </dl>
@@ -705,7 +693,8 @@ argument.</p>
 <dl class="staticmethod">
 <dt id="client.Helper.transfer_output_files">
 <em class="property">static </em><tt class="descclassname">Helper.</tt><tt class="descname">transfer_output_files</tt><big>(</big><em>workflow_id</em>, <em>wf_ctrl</em>, <em>buffer_size=262144</em><big>)</big><a class="reference internal" href="_modules/client.html#Helper.transfer_output_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.Helper.transfer_output_files" title="Permalink to this definition">¶</a></dt>
-<dd><p>Transfers all the output files of a workflow which are ready to transfer.</p>
+<dd><p>Transfers all the output files of a workflow which are ready to
+transfer.</p>
 <ul>
 <li><p class="first">workflow_id <em>workflow identifier</em></p>
 </li>
@@ -713,8 +702,8 @@ argument.</p>
 </li>
 <li><dl class="first docutils">
 <dt>buffer_size <em>int</em></dt>
-<dd><p class="first last">Depending on the transfer method, the files can be transfered piece by
-piece. The size of each piece can be tuned using the buffer_size
+<dd><p class="first last">Depending on the transfer method, the files can be transfered piece
+by piece. The size of each piece can be tuned using the buffer_size
 argument.</p>
 </dd>
 </dl>
@@ -738,8 +727,8 @@ Uses JSON format if Python &gt;= 2.6, Python pickle otherwise.</p>
 <dt id="client.Helper.unserialize">
 <em class="property">static </em><tt class="descclassname">Helper.</tt><tt class="descname">unserialize</tt><big>(</big><em>file_path</em><big>)</big><a class="reference internal" href="_modules/client.html#Helper.unserialize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.Helper.unserialize" title="Permalink to this definition">¶</a></dt>
 <dd><p>Loads a workflow from a file.
-Opens JSON format or pickle if Python &gt;= 2.6, only Python pickle otherwise 
-(see the method: Helper.convert_wf_file_for_p2_5).</p>
+Opens JSON format or pickle if Python &gt;= 2.6, only Python pickle
+otherwise (see the method: Helper.convert_wf_file_for_p2_5).</p>
 <ul class="simple">
 <li>file_path <em>String</em></li>
 <li>returns: <em>client.Workflow</em></li>
@@ -751,8 +740,8 @@ Opens JSON format or pickle if Python &gt;= 2.6, only Python pickle otherwise
 <dt id="client.Helper.convert_wf_file_for_p2_5">
 <em class="property">static </em><tt class="descclassname">Helper.</tt><tt class="descname">convert_wf_file_for_p2_5</tt><big>(</big><em>origin_file_path</em>, <em>target_file_path</em><big>)</big><a class="reference internal" href="_modules/client.html#Helper.convert_wf_file_for_p2_5"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#client.Helper.convert_wf_file_for_p2_5" title="Permalink to this definition">¶</a></dt>
 <dd><p>This method requires Python &gt;= 2.6.
-It converts a workflow file created using Python &gt;= 2.6 to workflow file
-usable in Python 2.5.</p>
+It converts a workflow file created using Python &gt;= 2.6 to workflow
+file usable in Python 2.5.</p>
 </dd></dl>
 
 </div>
@@ -830,12 +819,12 @@ usable in Python 2.5.</p>
         <li class="right" >
           <a href="workflow_creation.html" title="Workflow creation API"
              >previous</a> |</li>
-        <li><a href="index.html">soma-workflow version 2.6 documentation</a> &raquo;</li> 
+        <li><a href="index.html">soma-workflow version 2.8 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2011 CEA, Neurospin, France, CATI, France.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

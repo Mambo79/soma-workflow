@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -8,15 +6,15 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>MPI workflow runner —beta— &mdash; soma-workflow version 2.6 documentation</title>
+    <title>MPI workflow runner —beta— &mdash; soma-workflow version 2.8 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
-        VERSION:     '2.6.0',
+        URL_ROOT:    './',
+        VERSION:     '2.8.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,8 +23,8 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="shortcut icon" href="_static/icon_small.png"/>
-    <link rel="top" title="soma-workflow version 2.6 documentation" href="index.html" />
+    <link rel="shortcut icon" href="_static/icon_small.ico"/>
+    <link rel="top" title="soma-workflow version 2.8 documentation" href="index.html" />
     <link rel="next" title="Tips, Good Practices and Errors" href="errors_troubleshooting.html" />
     <link rel="prev" title="Examples" href="examples.html" /> 
   </head>
@@ -43,7 +41,7 @@
         <li class="right" >
           <a href="examples.html" title="Examples"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">soma-workflow version 2.6 documentation</a> &raquo;</li> 
+        <li><a href="index.html">soma-workflow version 2.8 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -101,7 +99,7 @@
 <p class="last"><strong>SCHEDULER_TYPE must be set to &#8220;mpi&#8221;</strong></p>
 </div>
 <p>Example:</p>
-<div class="highlight-python"><pre>[Titan_MPI]
+<div class="highlight-python"><div class="highlight"><pre>[Titan_MPI]
 
 DATABASE_FILE        = path_mpi_runner_config/soma_workflow.db
 TRANSFERED_FILES_DIR = path_mpi_runner_config/transfered_files
@@ -113,7 +111,8 @@ SERVER_LOG_FORMAT = %(asctime)s =&gt; line %(lineno)s: %(message)s
 SERVER_LOG_LEVEL  = ERROR
 ENGINE_LOG_DIR    = path/logs/
 ENGINE_LOG_FORMAT = %(asctime)s =&gt; line %(lineno)s: %(message)s
-ENGINE_LOG_LEVEL  = ERROR</pre>
+ENGINE_LOG_LEVEL  = ERROR
+</pre></div>
 </div>
 <p>Optionally, to monitor the workflow execution from a remote machine, the following lines can be used to configure soma-workflow on that machine:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="n">Titan_MPI</span><span class="p">]</span>
@@ -128,7 +127,7 @@ ENGINE_LOG_LEVEL  = ERROR</pre>
 </div>
 <div class="section" id="mpi-workflow-runner-options">
 <h2>MPI_workflow_runner options:<a class="headerlink" href="#mpi-workflow-runner-options" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><pre>$ python -m soma_workflow.MPI_workflow_runner --help
+<div class="highlight-python"><div class="highlight"><pre>$ python -m soma_workflow.MPI_workflow_runner --help
 Usage: MPI_workflow_runner.py [options]
 
 Options:
@@ -140,39 +139,44 @@ Options:
   --nb_attempt_per_job=NB_ATTEMPT_PER_JOB
                         A job can be restarted several time if it fails. This
                         option specify the number of attempt per job. By
-                        default, the jobs are not restarted.</pre>
+                        default, the jobs are not restarted.
+</pre></div>
 </div>
 </div>
 <div class="section" id="example-using-pbs">
 <h2>Example using PBS:<a class="headerlink" href="#example-using-pbs" title="Permalink to this headline">¶</a></h2>
 <p>Create a submission script for PBS (example <em>run_workflow.sh</em>):</p>
-<div class="highlight-python"><pre>#!/bin/bash
+<div class="highlight-python"><div class="highlight"><pre>#!/bin/bash
 #PBS -N my_workflow
 #PBS -j oe
 #PBS -l walltime=10:00:00
 #PBS -l nodes=3:ppn=8
 #PBS -q long
 
-time mpirun python -m soma_workflow.MPI_workflow_runner Titan_MPI --workflow $HOME/my_workflow_file</pre>
+time mpirun python -m soma_workflow.MPI_workflow_runner Titan_MPI --workflow $HOME/my_workflow_file
+</pre></div>
 </div>
 <p>In the example, the workflow will run on 8 cores of 3 nodes (that is 8*3 cpus). It will be submitted to the &#8220;long&#8221; queue, and will last at most 10 hours.</p>
 <p>Use the following command to submit the script to the cluster, and thus start the workflow execution:</p>
-<div class="highlight-python"><pre>$ qsub run_workflow.sh</pre>
+<div class="highlight-python"><div class="highlight"><pre>$ qsub run_workflow.sh
+</pre></div>
 </div>
 <p>You will get an cluster id for the MPI job you have submitted (112108 for example).
 Use the following command line to kill the MPI job and thus stop workflow execution:</p>
-<div class="highlight-python"><pre>$ qdel 112108</pre>
+<div class="highlight-python"><div class="highlight"><pre>$ qdel 112108
+</pre></div>
 </div>
 <p>Each workflow has an id in Soma-workflow. This id is displayed in the GUI or can be recovered using the Python API (example 520).
 Use the following submission script to restart the workflow:</p>
-<div class="highlight-python"><pre>#!/bin/bash
+<div class="highlight-python"><div class="highlight"><pre>#!/bin/bash
 #PBS -N my_workflow
 #PBS -j oe
 #PBS -l walltime=10:00:00
 #PBS -l nodes=3:ppn=8
 #PBS -q long
 
-time mpirun python -m soma_workflow.MPI_workflow_runner Titan_MPI --restart 520</pre>
+time mpirun python -m soma_workflow.MPI_workflow_runner Titan_MPI --restart 520
+</pre></div>
 </div>
 <p>As before, use &#8220;qsub&#8221; to submit the workflow and possibly &#8220;qdel&#8221; to stop it.</p>
 </div>
@@ -249,12 +253,12 @@ time mpirun python -m soma_workflow.MPI_workflow_runner Titan_MPI --restart 520<
         <li class="right" >
           <a href="examples.html" title="Examples"
              >previous</a> |</li>
-        <li><a href="index.html">soma-workflow version 2.6 documentation</a> &raquo;</li> 
+        <li><a href="index.html">soma-workflow version 2.8 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2011 CEA, Neurospin, France, CATI, France.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

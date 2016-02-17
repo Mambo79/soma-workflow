@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -8,15 +6,15 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Soma-workflow concepts &mdash; soma-workflow version 2.6 documentation</title>
+    <title>Soma-workflow concepts &mdash; soma-workflow version 2.8 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
-        VERSION:     '2.6.0',
+        URL_ROOT:    './',
+        VERSION:     '2.8.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,8 +23,8 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="shortcut icon" href="_static/icon_small.png"/>
-    <link rel="top" title="soma-workflow version 2.6 documentation" href="index.html" />
+    <link rel="shortcut icon" href="_static/icon_small.ico"/>
+    <link rel="top" title="soma-workflow version 2.8 documentation" href="index.html" />
     <link rel="next" title="Graphical User Interface" href="gui.html" />
     <link rel="prev" title="Soma-workflow: A unified and simple interface to parallel computing resource" href="index.html" /> 
   </head>
@@ -43,7 +41,7 @@
         <li class="right" >
           <a href="index.html" title="Soma-workflow: A unified and simple interface to parallel computing resource"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">soma-workflow version 2.6 documentation</a> &raquo;</li> 
+        <li><a href="index.html">soma-workflow version 2.8 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -144,7 +142,7 @@ in the definition of jobs or workflows (see <a class="reference internal" href="
 <p>To provide you quickly with a functional application, your own multiple core
 machine can be used directly and without any configuration to distribute
 computation.</p>
-<div class="admonition-see-also admonition seealso">
+<div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <p class="last"><a class="reference external" href="http://brainvisa.info/soma-workflow">Soma-workflow main page</a> for installation.</p>
 </div>
@@ -194,7 +192,7 @@ jobs are done.</p>
 the computing resource side. If no workflow or job were submitted with the
 client application or if they all ended, the workflow engine process stops as
 soon as the client application is closed.</p>
-<div class="admonition-see-also admonition seealso">
+<div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <p class="last">configuration and installation section for the <a class="reference internal" href="install_config.html#server"><em>server</em></a> and the <a class="reference internal" href="install_config.html#client-intall-config"><em>client</em></a></p>
 </div>
@@ -216,7 +214,7 @@ The jobs using file transfers in their program command line, has to state
 which file transfers are input, output or both. That way soma-workflow
 waits for all the input files to exist on the computing resource before
 submitting the job to the resource.</p>
-<div class="admonition-see-also admonition seealso">
+<div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <p class="last"><a class="reference internal" href="examples.html#file-transfer-examples"><em>file transfer examples</em></a> in the example section.</p>
 </div>
@@ -239,17 +237,19 @@ a namespace (see <a class="reference internal" href="install_config.html#conf-se
 you will configure the translation file &#8220;my_app_translation&#8221; under the namespace
 &#8220;MyApp&#8221;. The content the translation file is a list of unique identifier
 associated to directory paths. For examples:</p>
-<div class="highlight-python"><pre>5ee1e9a0-5959-11e0-80e3-0800200c9a66  /home/myname/data_for_my_app/data1/
+<div class="highlight-python"><div class="highlight"><pre>5ee1e9a0-5959-11e0-80e3-0800200c9a66  /home/myname/data_for_my_app/data1/
 922ba490-5959-11e0-80e3-0800200c9a66  /home/myname/data_for_my_app/data2/
-a7623ef0-5959-11e0-80e3-0800200c9a66  /home/myname/data_for_my_app/data3/</pre>
+a7623ef0-5959-11e0-80e3-0800200c9a66  /home/myname/data_for_my_app/data3/
+</pre></div>
 </div>
 <p>One can use more simple identifiers since each translation file is included
 into a namespace:</p>
-<div class="highlight-python"><pre>data1_dir  /home/myname/data_for_my_app/data1/
+<div class="highlight-python"><div class="highlight"><pre>data1_dir  /home/myname/data_for_my_app/data1/
 data2_dir  /home/myname/data_for_my_app/data2/
-data3_dir  /home/myname/data_for_my_app/data3/</pre>
+data3_dir  /home/myname/data_for_my_app/data3/
+</pre></div>
 </div>
-<div class="admonition-see-also admonition seealso">
+<div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <p class="last"><a class="reference internal" href="examples.html#shared-resource-path-examples"><em>shared resource path examples</em></a> in the example section.</p>
 </div>
@@ -321,12 +321,12 @@ data3_dir  /home/myname/data_for_my_app/data3/</pre>
         <li class="right" >
           <a href="index.html" title="Soma-workflow: A unified and simple interface to parallel computing resource"
              >previous</a> |</li>
-        <li><a href="index.html">soma-workflow version 2.6 documentation</a> &raquo;</li> 
+        <li><a href="index.html">soma-workflow version 2.8 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2011 CEA, Neurospin, France, CATI, France.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>
